@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defaults>
+  <AgeTypeRandomLaws>
+    <AgeTypeRandomLaw law="All">
+      <AgeTypePercent chance="0.1" value="Child"/>
+      <AgeTypePercent chance="0.15" value="Teen"/>
+      <AgeTypePercent chance="0.25" value="Adult"/>
+      <AgeTypePercent chance="0.25" value="Middle"/>
+      <AgeTypePercent chance="0.15" value="Senior"/>
+      <AgeTypePercent chance="0.1" value="Elderly"/>
+    </AgeTypeRandomLaw>
+  </AgeTypeRandomLaws>
+</Defaults>

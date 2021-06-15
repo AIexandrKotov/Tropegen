@@ -1,0 +1,32 @@
+﻿Tropegenbase.Characters.Character=Персонаж
+
+Tropegenbase.Characters.Archetypes+BiologicalGender=Пол
+BiologicalGender.Male=Мужской
+BiologicalGender.Female=Женский
+
+Tropegenbase.Characters.Archetypes+AgeType=Возраст
+AgeType.Child=Ребёнок
+AgeType.Teen=Подросток
+AgeType.Adult=Взрослый
+AgeType.Middle=Средних лет
+AgeType.Senior=Пожилой
+AgeType.Elderly=Старый
+
+years=лет
+birthdate=День рождения
+Month1=января
+Month2=февраля
+Month3=марта
+Month4=апреля
+Month5=мая
+Month6=июня
+Month7=июля
+Month8=августа
+Month9=сентября
+Month10=октября
+Month11=ноября
+Month12=декабря
+
+
+
+WF_RandomButton=Случайный
