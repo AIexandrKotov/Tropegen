@@ -110,8 +110,8 @@ namespace Tropegenbase.Data
             }
             else Current = Default;
 
-            names = ReadLines(() => assembly.GetManifestResourceStream("Tropegenbase.Data.Names.dat"), Encoding.GetEncoding(1251)).ToName(x => x.Split(' ')[0], x => int.Parse(x.Split(' ')[2]), x => x.Split(' ')[1] == "M").ToArray();
-            surnames = ReadLines(() => assembly.GetManifestResourceStream("Tropegenbase.Data.Surnames.dat"), Encoding.GetEncoding(1251)).ToSurname(x => x.Split(' ')[0], x => int.Parse(x.Split(' ')[1])).ToArray();
+            names = ReadLines(() => assembly.GetManifestResourceStream("Tropegenbase.Data.Names.dat"), Encoding.UTF8).ToName(x => x.Split(' ')[0], x => int.Parse(x.Split(' ')[2]), x => x.Split(' ')[1] == "M").ToArray();
+            surnames = ReadLines(() => assembly.GetManifestResourceStream("Tropegenbase.Data.Surnames.dat"), Encoding.UTF8).ToSurname(x => x.Split(' ')[0], x => int.Parse(x.Split(' ')[1])).ToArray();
             PopularSettingNames = DefaultPopularSettingNames;
             PopularSettingSurnames = DefaultPopularSettingSurnames;
             MaxNames = Math.Min(names.Where(x => x.Item2).Max(x => x.Item3), names.Where(x => !x.Item2).Max(x => x.Item3));
