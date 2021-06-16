@@ -36,6 +36,7 @@ namespace Tropegen
             this.RandomButton = new System.Windows.Forms.Button();
             this.copyrightLabel = new System.Windows.Forms.Label();
             this.usedLabel = new System.Windows.Forms.Label();
+            this.SettingsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TB_Seed
@@ -48,6 +49,7 @@ namespace Tropegen
             // 
             // ChString
             // 
+            this.ChString.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ChString.Location = new System.Drawing.Point(13, 40);
             this.ChString.Name = "ChString";
             this.ChString.ReadOnly = true;
@@ -95,19 +97,31 @@ namespace Tropegen
             this.usedLabel.Text = "thanks";
             this.usedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // SettingsButton
+            // 
+            this.SettingsButton.Location = new System.Drawing.Point(344, 11);
+            this.SettingsButton.Name = "SettingsButton";
+            this.SettingsButton.Size = new System.Drawing.Size(85, 23);
+            this.SettingsButton.TabIndex = 6;
+            this.SettingsButton.Text = "Settings";
+            this.SettingsButton.UseVisualStyleBackColor = true;
+            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(580, 392);
+            this.Controls.Add(this.SettingsButton);
             this.Controls.Add(this.usedLabel);
             this.Controls.Add(this.copyrightLabel);
             this.Controls.Add(this.RandomButton);
             this.Controls.Add(this.versionLabel);
-            this.Controls.Add(this.ChString);
             this.Controls.Add(this.TB_Seed);
+            this.Controls.Add(this.ChString);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Tropegen";
             this.ResumeLayout(false);
@@ -123,6 +137,7 @@ namespace Tropegen
         private System.Windows.Forms.Button RandomButton;
         private System.Windows.Forms.Label copyrightLabel;
         private System.Windows.Forms.Label usedLabel;
+        private System.Windows.Forms.Button SettingsButton;
     }
 }
 

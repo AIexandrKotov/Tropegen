@@ -48,6 +48,7 @@ namespace Tropegenbase
         public static string Lang(this string s) => Data.Lang.Current.Strings.ContainsKey(s) ? Data.Lang.Current.Strings[s] : s;
         public static string Lang(this Enum e) => Data.Lang.Current.Strings.ContainsKey($"{e.GetType().Name}.{e}") ? Data.Lang.Current[$"{e.GetType().Name}.{e}"] : e.ToString();
         public static string Lang(this Type t) => Data.Lang.Current.Strings.ContainsKey(t.FullName) ? Data.Lang.Current[t.FullName] : t.FullName;
+        public static string LangEnumType<T>(this T t) where T: Enum => Data.Lang.Current.Strings.ContainsKey(CachedEnum<T>.Type.FullName) ? Data.Lang.Current[CachedEnum<T>.Type.FullName] : CachedEnum<T>.Type.FullName;
         public static T ToEnum<T>(this string s) where T : Enum
         {
             return CachedEnum<T>.Parse(s);

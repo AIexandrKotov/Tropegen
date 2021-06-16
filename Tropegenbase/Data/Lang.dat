@@ -12,6 +12,14 @@ AgeType.Middle=Средних лет
 AgeType.Senior=Пожилой
 AgeType.Elderly=Старый
 
+Tropegenbase.Characters.Archetypes+Morality=Мораль
+Morality.Neutral=Нейтральная
+Morality.White=Белая
+Morality.LightGray=Светло-серая
+Morality.Gray=Серая
+Morality.DarkGray=Тёмно-серая
+Morality.Black=Чёрная
+
 years=лет
 birthdate=День рождения
 Month1=января
@@ -30,3 +38,102 @@ Month12=декабря
 
 
 WF_RandomButton=Случайный
+
+Changes.VeryPlus=↑
+Changes.Plus=+
+Changes.None=_
+Changes.Minus=-
+Changes.VeryMinus=↓
+
+Tropegenbase.Characters.Archetypes+Ethical=Этичность
+Ethical.Lawful=Закон
+Ethical.Neutral=Нейтрал
+Ethical.Chaotic=Хаос
+
+Tropegenbase.Characters.Archetypes+Ego=Эго
+Ego.Altruist=Альтруист
+Ego.Opportunist=Оппортунист
+Ego.Egoist=Эгоист
+
+Tropegenbase.Characters.Archetypes+Idea=Идейность
+Idea.Idealist=Идеализм
+Idea.Apathetic=Апатичность
+Idea.Cynic=Циник
+
+Tropegenbase.Characters.Archetypes+Protest=Протестность
+Protest.None=Отсутствует
+Protest.Activist=Активизм
+Protest.Reactivist=Реактивизм
+Protest.Extremist=Экстремизм
+Protest.Terrorist=Терроризм
+Protest.Aboveit=Выше этого
+
+Tropegenbase.Characters.Archetypes+Political=Политические предпочтения
+Political.Apolit=Аполитичные
+Political.Neutral=Нейтральные
+Political.Centrist=Центристские
+Political.LeftWing=Левые
+Political.RightWing=Правые
+Political.FarLeft=Ультралевые
+Political.FarRight=Ультраправые
+
+Tropegenbase.Characters.Archetypes+PhysicalPower=Физическая сила
+PhysicalPower.None=Никакая
+PhysicalPower.Milksop=Низкая
+PhysicalPower.Ordinary=Обычная
+PhysicalPower.Strong=Высокая
+PhysicalPower.IncrediblyStrong=Невероятная
+
+Tropegenbase.Characters.Archetypes+MagicPower=Магическая сила
+MagicPower.None=Никакая
+MagicPower.Milksop=Низкая
+MagicPower.Ordinary=Обычная
+MagicPower.Strong=Высокая
+MagicPower.IncrediblyStrong=Невероятная
+
+Tropegenbase.Characters.Archetypes+WillPower=Сила воли
+WillPower.None=Никакая
+WillPower.Milksop=Низкая
+WillPower.Ordinary=Обычная
+WillPower.Strong=Высокая
+WillPower.IncrediblyStrong=Невероятная
+
+Tropegenbase.Characters.Archetypes+Stamina=Выносливость
+Stamina.None=Никакая
+Stamina.Little=Низкая
+Stamina.Ordinary=Обычная
+Stamina.High=Высокая
+Stamina.Hardy=Невероятная
+
+Tropegenbase.Characters.Archetypes+Intellect=Интеллект
+Intellect.None=Очень низкий
+Intellect.Stupid=Низкий
+Intellect.Ordinary=Обыкновенный
+Intellect.Smart=Высокий
+Intellect.Supermind=Сверхразум
+
+WF_STG_Loaded=Информация загружена
+WF_STG_Defaulted=По умолчанию
+
+WF_SettingsButton=Настройки
+WF_STG_LangGB=Описание
+WF_STG_RLGB=Законы рандомизации
+WF_STG_Names=Держателей имени:
+WF_STG_Surnames=Держателей фамилии:
+WF_STG_DefaultB=По умолчанию
+
+WF_SettingsForm=Настройки
+
+HelpInfo_AgeTypeLaw.All=Все возрастные типы
+HelpInfo_AgeTypeLaw.Normal=Возрастные типы без детей и стариков
+HelpInfo_MoralityLaw.All=Все виды морали
+HelpInfo_MoralityLaw.Normal=Оттенки серого
+HelpInfo_ProtestLaw.All=Все виды протестности
+HelpInfo_PoliticalLaw.All=Все виды политических убеждений
+HelpInfo_PhysicalPowerLaw.All=Любая физическая сила
+HelpInfo_MagicPowerLaw.All=Любая магическая сила
+HelpInfo_WillPowerLaw.All=Любая сила воли
+HelpInfo_StaminaLaw.All=Любая выносливость
+HelpInfo_IntellectLaw.All=Любой интеллект
+HelpInfo_NamesCount=При генерации будут использованы имена, которые встречаются минимум у указанного числа людей
+HelpInfo_SurnamesCount=При генерации будут использованы фамилии, которые встречаются минимум у указанного числа людей

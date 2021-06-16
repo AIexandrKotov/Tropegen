@@ -9,5 +9,91 @@
       <AgeTypePercent chance="0.15" value="Senior"/>
       <AgeTypePercent chance="0.1" value="Elderly"/>
     </AgeTypeRandomLaw>
+    <AgeTypeRandomLaw law="Normal">
+      <AgeTypePercent chance="0.40" value="Teen"/>
+      <AgeTypePercent chance="0.40" value="Adult"/>
+      <AgeTypePercent chance="0.20" value="Middle"/>
+    </AgeTypeRandomLaw>
   </AgeTypeRandomLaws>
+  <MoralityRandomLaws>
+    <MoralityRandomLaw law="All">
+      <MoralityPercent chance="0.1" value="Neutral"/>
+      <MoralityPercent chance="0.15" value="White"/>
+      <MoralityPercent chance="0.25" value="LightGray"/>
+      <MoralityPercent chance="0.25" value="Gray"/>
+      <MoralityPercent chance="0.15" value="DarkGray"/>
+      <MoralityPercent chance="0.1" value="Black"/>
+    </MoralityRandomLaw>
+    <MoralityRandomLaw law="Normal">
+      <MoralityPercent chance="0.33" value="LightGray"/>
+      <MoralityPercent chance="0.34" value="Gray"/>
+      <MoralityPercent chance="0.33" value="DarkGray"/>
+    </MoralityRandomLaw>
+  </MoralityRandomLaws>
+  <ProtestRandomLaws>
+    <ProtestRandomLaw law="All">
+      <ProtestPercent chance="0.6" value="None"/>
+      <ProtestPercent chance="0.2" value="Activist"/>
+      <ProtestPercent chance="0.1" value="Reactivist"/>
+      <ProtestPercent chance="0.06" value="Extremist"/>
+      <ProtestPercent chance="0.01" value="Terrorist"/>
+      <ProtestPercent chance="0.03" value="Aboveit"/>
+    </ProtestRandomLaw>
+  </ProtestRandomLaws>
+  <PoliticalRandomLaws>
+    <PoliticalRandomLaw law="All">
+      <PoliticalPercent chance="0.06" value="Apolit"/>
+      <PoliticalPercent chance="0.14" value="Neutral"/>
+      <PoliticalPercent chance="0.33" value="Centrist"/>
+      <PoliticalPercent chance="0.2" value="LeftWing"/>
+      <PoliticalPercent chance="0.1" value="RightWing"/>
+      <PoliticalPercent chance="0.05" value="FarLeft"/>
+      <PoliticalPercent chance="0.02" value="FarRight"/>
+    </PoliticalRandomLaw>
+  </PoliticalRandomLaws>
+  <PhysicalPowerRandomLaws>
+    <PhysicalPowerRandomLaw law="All">
+      <PhysicalPowerPercent chance="0.01" value="None"/>
+      <PhysicalPowerPercent chance="0.15" value="Milksop"/>
+      <PhysicalPowerPercent chance="0.66" value="Ordinary"/>
+      <PhysicalPowerPercent chance="0.15" value="Strong"/>
+      <PhysicalPowerPercent chance="0.03" value="IncrediblyStrong"/>
+    </PhysicalPowerRandomLaw>
+  </PhysicalPowerRandomLaws>
+  <MagicPowerRandomLaws>
+    <MagicPowerRandomLaw law="All">
+      <MagicPowerPercent chance="0.01" value="None"/>
+      <MagicPowerPercent chance="0.15" value="Milksop"/>
+      <MagicPowerPercent chance="0.66" value="Ordinary"/>
+      <MagicPowerPercent chance="0.15" value="Strong"/>
+      <MagicPowerPercent chance="0.03" value="IncrediblyStrong"/>
+    </MagicPowerRandomLaw>
+  </MagicPowerRandomLaws>
+  <WillPowerRandomLaws>
+    <WillPowerRandomLaw law="All">
+      <WillPowerPercent chance="0.01" value="None"/>
+      <WillPowerPercent chance="0.15" value="Milksop"/>
+      <WillPowerPercent chance="0.66" value="Ordinary"/>
+      <WillPowerPercent chance="0.15" value="Strong"/>
+      <WillPowerPercent chance="0.03" value="IncrediblyStrong"/>
+    </WillPowerRandomLaw>
+  </WillPowerRandomLaws>
+  <StaminaRandomLaws>
+    <StaminaRandomLaw law="All">
+      <StaminaPercent chance="0.01" value="None"/>
+      <StaminaPercent chance="0.15" value="Little"/>
+      <StaminaPercent chance="0.66" value="Ordinary"/>
+      <StaminaPercent chance="0.15" value="High"/>
+      <StaminaPercent chance="0.03" value="Hardy"/>
+    </StaminaRandomLaw>
+  </StaminaRandomLaws>
+  <IntellectRandomLaws>
+    <IntellectRandomLaw law="All">
+      <IntellectPercent chance="0.01" value="None"/>
+      <IntellectPercent chance="0.15" value="Stupid"/>
+      <IntellectPercent chance="0.66" value="Ordinary"/>
+      <IntellectPercent chance="0.15" value="Smart"/>
+      <IntellectPercent chance="0.03" value="Supermind"/>
+    </IntellectRandomLaw>
+  </IntellectRandomLaws>
 </Defaults>

@@ -24,8 +24,9 @@ namespace Tropegenbase
         static RandomationLawHelper()
         {
             add(CachedEnum<Archetypes.AgeType>.Type, Defaults.RandomLaw_AgeType);
-            //add(Extensions.EnumCache<Archetypes.AgeType>.Type, Archetypes.RandomLaw_AgeType);
-            //add(Extensions.EnumCache<Archetypes.Morality>.Type, Defaults.RandomLaw_Morality);
+            add(CachedEnum<Archetypes.Morality>.Type, Defaults.RandomLaw_Morality);
+            add(CachedEnum<Archetypes.Protest>.Type, Defaults.RandomLaw_Protest);
+            add(CachedEnum<Archetypes.Political>.Type, Defaults.RandomLaw_Political);
             Types = types.ToArray();
         }
     }
@@ -66,14 +67,14 @@ namespace Tropegenbase
                         lawNodes[i] = new PercentLawNode(right, right + arr[i].Item1, arr[i].Item2);
                         right += arr[i].Item1;
                     }
-                    l1 = null;
                 }
                 else if (l2.Any())
                 {
                     lawNodes = l2.Select(x => new PercentLawNode(x.Item1, x.Item2, x.Item3)).ToArray();
-                    l2 = null;
                 }
                 else throw new Exception();
+                l1 = null;
+                l2 = null;
             }
 
             public PercentLaw(params (double, double, T)[] arr)

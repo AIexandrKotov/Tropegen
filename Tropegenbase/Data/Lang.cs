@@ -93,6 +93,10 @@ namespace Tropegenbase.Data
             return lang;
         }
 
+        public static readonly int
+            MaxNames,
+            MaxSurnames;
+
         static Lang()
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -110,6 +114,8 @@ namespace Tropegenbase.Data
             surnames = ReadLines(() => assembly.GetManifestResourceStream("Tropegenbase.Data.Surnames.dat"), Encoding.GetEncoding(1251)).ToSurname(x => x.Split(' ')[0], x => int.Parse(x.Split(' ')[1])).ToArray();
             PopularSettingNames = DefaultPopularSettingNames;
             PopularSettingSurnames = DefaultPopularSettingSurnames;
+            MaxNames = Math.Min(names.Where(x => x.Item2).Max(x => x.Item3), names.Where(x => !x.Item2).Max(x => x.Item3));
+            MaxSurnames = surnames.Max(x => x.Item2);
         }
     }
 }

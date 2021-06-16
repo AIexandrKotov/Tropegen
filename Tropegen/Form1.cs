@@ -21,10 +21,11 @@ namespace Tropegen
             usedLabel.Text = "thanks to mydata.biz";
             versionLabel.Text = Tropegenbase.GlobalAssemblyVersion.VersionInfo;
             RandomButton.Text = Lang.Current["WF_RandomButton"];
+            SettingsButton.Text = Lang.Current["WF_SettingsButton"];
         }
 
         private uint last_id;
-        private Random seeder = new Random(24);
+        private Random seeder = new Random(Environment.TickCount);
 
         private void TB_Seed_TextChanged(object sender, EventArgs e)
         {
@@ -45,6 +46,17 @@ namespace Tropegen
         private void RandomButton_Click(object sender, EventArgs e)
         {
             TB_Seed.Text = seeder.Next().ToString();
+        }
+
+        private void SettingsButton_Click(object sender, EventArgs e)
+        {
+            var sets = new Settings();
+            sets.FormClosed += (o, e2) =>
+            {
+                Enabled = true;
+            };
+            Enabled = false;
+            sets.Show();
         }
     }
 }
