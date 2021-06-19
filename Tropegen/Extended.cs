@@ -22,29 +22,33 @@ namespace Tropegen
 
         public Character CurrentCharacter;
 
-        public List<Character> SavedCharacters = new List<Character>();
+        public List<CharacterFile> SavedFiles;
+
+        public string CurrentFile;
+
+        public List<Character> CurrentSavedCharacters = new List<Character>();
 
         private void Saved_RemoveButton_Click(object sender, EventArgs e)
         {
             if (SavedListBox.SelectedIndex == -1) return;
             var si = SavedListBox.SelectedIndex;
-            SavedCharacters.RemoveAt(SavedListBox.SelectedIndex);
+            CurrentSavedCharacters.RemoveAt(si);
             UpdateSavedListBox();
-            if (SavedListBox.Items.Count > si) SavedListBox.SelectedIndex = SavedListBox.Items.Count - 1;
+            if (SavedListBox.Items.Count <= si) SavedListBox.SelectedIndex = SavedListBox.Items.Count - 1;
             else SavedListBox.SelectedIndex = si;
         }
 
         private void SavedListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SavedListBox.SelectedIndex == -1) return;
-            CurrentCharacter = SavedCharacters[SavedListBox.SelectedIndex];
+            CurrentCharacter = CurrentSavedCharacters[SavedListBox.SelectedIndex];
             UpdateCharacter(CurrentCharacter);
         }
 
         private void Saved_DuplicateButton_Click(object sender, EventArgs e)
         {
             if (SavedListBox.SelectedIndex == -1) return;
-            SavedCharacters.Add((Character)CurrentCharacter.Clone());
+            CurrentSavedCharacters.Add((Character)CurrentCharacter.Clone());
             UpdateSavedListBox();
             SavedListBox.SelectedIndex = SavedListBox.Items.Count - 1;
         }
@@ -52,20 +56,20 @@ namespace Tropegen
         private void UpdateSavedListBox()
         {
             SavedListBox.Items.Clear();
-            SavedListBox.Items.AddRange(SavedCharacters.ConvertAll(x => x.Name + " " + x.Surname).ToArray());
+            SavedListBox.Items.AddRange(CurrentSavedCharacters.ConvertAll(x => x.Name + " " + x.Surname).ToArray());
         }
 
         private void UpdateCurrentInListBox()
         {
-            if (!CurrentCharacter.Generated && SavedCharacters.Contains(CurrentCharacter)) SavedListBox.Items[SavedCharacters.IndexOf(CurrentCharacter)] = CurrentCharacter.Name + " " + CurrentCharacter.Surname;
+            if (!CurrentCharacter.Generated && CurrentSavedCharacters.Contains(CurrentCharacter)) SavedListBox.Items[CurrentSavedCharacters.IndexOf(CurrentCharacter)] = CurrentCharacter.Name + " " + CurrentCharacter.Surname;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (!SavedCharacters.Contains(CurrentCharacter)) 
+            if (!CurrentSavedCharacters.Contains(CurrentCharacter)) 
             {
                 CurrentCharacter.Generated = false;
-                SavedCharacters.Add(CurrentCharacter);
+                CurrentSavedCharacters.Add(CurrentCharacter);
                 UpdateSavedListBox();
             }
         }
@@ -80,10 +84,8 @@ namespace Tropegen
 
             FormClosed += (o, e) =>
             {
-                var path = GetPath();
-                var characters = GetPath() + "characters.dat";
-                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-                Character.Save(characters, SavedCharacters);
+                SavedFiles.ForEach(x => { if (x.Edited) x.Save(); });
+                File.WriteAllText(GetPath() + "last.dat", CurrentFile);
             };
 
             GenderComboBox.Items.AddRange(CachedEnum<Archetypes.BiologicalGender>.Enums.Select(x => Lang.Get(x.Lang())).ToArray());
@@ -126,8 +128,11 @@ namespace Tropegen
             SaveButton.Text = Lang.Get("Save");
             NewButton.Text = Lang.Get("New");
             SettingsStripDown.Text = Lang.Get("Settings");
+            Saved_RemoveButton.Text = Lang.Get("Remove");
+            Saved_DuplicateButton.Text = Lang.Get("Duplicate");
 
             RandomationLawsButton.Text = Lang.Get("RandomationLaws");
+            CharacterListsButton.Text = Lang.Get("CharacterLists");
 
             NameLabel.Text = Lang.Get("Name") + ":";
             SurnameLabel.Text = Lang.Get("Surname") + ":";
@@ -189,17 +194,35 @@ namespace Tropegen
             NameLabel.Text = Lang.Get("Name") + ":";
             NameLabel.Text = Lang.Get("Name") + ":";
 
-            var path2 = GetPath() + "characters.dat";
-            if (File.Exists(path2))
+            SavedFiles = CharacterFile.CharacterFiles();
+            var last_path = GetPath() + "last.dat";
+            var last = default(string);
+            if (File.Exists(last_path))
             {
-                SavedCharacters = Character.Load(path2).ToList();
-                UpdateSavedListBox();
+                last = File.ReadAllText(last_path);
             }
+            if (SavedFiles.Count == 0)
+            {
+                SavedFiles.Add(CharacterFile.New("Default"));
+                CurrentFile = "Default";
+            }
+            else
+            {
+                if (SavedFiles.Any(x => x.Name == last)) CurrentFile = last;
+                else CurrentFile = SavedFiles.Last().Name;
+            }
+            CurrentSavedCharacters = SavedFiles.Find(x => x.Name == CurrentFile).CharacterList;
 
-            if (SavedCharacters.Count > 0)
+            UpdateCharacterList();
+        }
+
+        public void UpdateCharacterList()
+        {
+            UpdateSavedListBox();
+            if (CurrentSavedCharacters.Count > 0)
             {
                 SavedListBox.SelectedIndex = SavedListBox.Items.Count - 1;
-                CurrentCharacter = SavedCharacters[SavedListBox.SelectedIndex];
+                CurrentCharacter = CurrentSavedCharacters[SavedListBox.SelectedIndex];
                 UpdateCharacter(CurrentCharacter);
             }
             else
@@ -754,6 +777,16 @@ namespace Tropegen
         private void FateTextBox_TextChanged(object sender, EventArgs e)
         {
             CurrentCharacter.Fate = FateTextBox.Text;
+        }
+
+        private void CharacterListsButton_Click(object sender, EventArgs e)
+        {
+            var cl = new CharacterLists(this);
+            cl.FormClosed += (o, e2) =>
+            {
+                UpdateCharacterList();
+            };
+            cl.ShowDialog();
         }
     }
 }

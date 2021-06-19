@@ -56,6 +56,13 @@
     <Compile Include="ChangeFiveChanges.Designer.cs">
       <DependentUpon>ChangeFiveChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="CharacterFile.cs" />
+    <Compile Include="CharacterLists.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CharacterLists.Designer.cs">
+      <DependentUpon>CharacterLists.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extended.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +91,9 @@
     </Compile>
     <EmbeddedResource Include="ChangeFiveChanges.resx">
       <DependentUpon>ChangeFiveChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CharacterLists.resx">
+      <DependentUpon>CharacterLists.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Extended.resx">
       <DependentUpon>Extended.cs</DependentUpon>

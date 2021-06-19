@@ -188,6 +188,7 @@ namespace Tropegen
             this.SaveButton = new System.Windows.Forms.ToolStripButton();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.CharacterListsButton = new System.Windows.Forms.ToolStripMenuItem();
             this.MainToolStrip.SuspendLayout();
             this.SavedGroup.SuspendLayout();
             this.SearchGroup.SuspendLayout();
@@ -222,7 +223,8 @@ namespace Tropegen
             // 
             this.SettingsStripDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.SettingsStripDown.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.RandomationLawsButton});
+            this.RandomationLawsButton,
+            this.CharacterListsButton});
             this.SettingsStripDown.Image = ((System.Drawing.Image)(resources.GetObject("SettingsStripDown.Image")));
             this.SettingsStripDown.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SettingsStripDown.Name = "SettingsStripDown";
@@ -233,7 +235,7 @@ namespace Tropegen
             // RandomationLawsButton
             // 
             this.RandomationLawsButton.Name = "RandomationLawsButton";
-            this.RandomationLawsButton.Size = new System.Drawing.Size(175, 22);
+            this.RandomationLawsButton.Size = new System.Drawing.Size(180, 22);
             this.RandomationLawsButton.Text = "Randomation Laws";
             this.RandomationLawsButton.Click += new System.EventHandler(this.RandomationLawsButton_Click);
             // 
@@ -1857,6 +1859,13 @@ namespace Tropegen
             this.SaveButton.Text = "Save";
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
+            // CharacterListsButton
+            // 
+            this.CharacterListsButton.Name = "CharacterListsButton";
+            this.CharacterListsButton.Size = new System.Drawing.Size(180, 22);
+            this.CharacterListsButton.Text = "CharacterLists";
+            this.CharacterListsButton.Click += new System.EventHandler(this.CharacterListsButton_Click);
+            // 
             // Extended
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2059,5 +2068,6 @@ namespace Tropegen
         private System.Windows.Forms.Button Saved_DuplicateButton;
         private System.Windows.Forms.ToolStripDropDownButton SettingsStripDown;
         private System.Windows.Forms.ToolStripMenuItem RandomationLawsButton;
+        private System.Windows.Forms.ToolStripMenuItem CharacterListsButton;
     }
 }
