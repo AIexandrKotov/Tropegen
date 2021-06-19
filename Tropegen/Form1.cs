@@ -23,9 +23,6 @@ namespace Tropegen
             RandomButton.Text = Lang.Current["WF_RandomButton"];
             SettingsButton.Text = Lang.Current["Settings"];
             RunExtendedButton.Text = Lang.Current["WF_RunExtended"];
-#if !DEBUG
-            RunExtendedButton.Visible = false;
-#endif
         }
 
         private uint last_id;
