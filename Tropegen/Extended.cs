@@ -72,12 +72,6 @@ namespace Tropegen
 
         private void Extended_Load(object sender, EventArgs e)
         {
-            var path = GetPath() + "characters.dat";
-            if (File.Exists(path))
-            {
-                SavedCharacters = Character.Load(path).ToList();
-                UpdateSavedListBox();
-            }
         }
 
         public Extended()
@@ -194,6 +188,13 @@ namespace Tropegen
             NameLabel.Text = Lang.Get("Name") + ":";
             NameLabel.Text = Lang.Get("Name") + ":";
             NameLabel.Text = Lang.Get("Name") + ":";
+
+            var path2 = GetPath() + "characters.dat";
+            if (File.Exists(path2))
+            {
+                SavedCharacters = Character.Load(path2).ToList();
+                UpdateSavedListBox();
+            }
 
             if (SavedCharacters.Count > 0)
             {
