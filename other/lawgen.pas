@@ -11,8 +11,9 @@ begin
   sb.AppendLine($'            All,');
   sb.AppendLine( '        }');
   sb.AppendLine();
+  sb.AppendLine($'        public const {s}Law Default{s}RandomLaw = {s}Law.All;');
   sb.AppendLine($'        static Dictionary<{s}Law, RandomationLaw<{s}>.PercentLaw> {s.ToLower}law = new Dictionary<{s}Law, RandomationLaw<{s}>.PercentLaw>();');
-  sb.AppendLine($'        private static {s}Law {underlvl} = {s}Law.All;');
+  sb.AppendLine($'        private static {s}Law {underlvl} = Default{s}RandomLaw;');
   sb.AppendLine($'        public static {s}Law Current{s}RandomLaw');
   sb.AppendLine( '        {');
   sb.AppendLine($'            get => {underlvl};');
@@ -59,7 +60,7 @@ begin
 end;
 
 begin
-  var s := 'Political';
+  var s := 'EyesColor';
   Println('Defaults.cs {class Defaults}:');
   Println('----------------------------------------------------------------');
   Println(genlaw(s));
@@ -76,9 +77,4 @@ begin
   Println('----------------------------------------------------------------');
   Println($'add(CachedEnum<Archetypes.{s}>.Type, Defaults.RandomLaw_{s});');
   Println('----------------------------------------------------------------');
-  Println(genxml('PhysicalPower'));
-  Println(genxml('MagicPower'));
-  Println(genxml('WillPower'));
-  Println(genxml('Stamina'));
-  Println(genxml('Intellect'));
 end.

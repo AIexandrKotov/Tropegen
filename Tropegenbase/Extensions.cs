@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,60 @@ namespace Tropegenbase
 {
     public static class Extensions
     {
+        static Encoding SerializeStringEncoding = Encoding.GetEncoding(1251);
+        /// <summary>
+        /// Читает строку любого размера
+        /// </summary>
+        public static string ReadFullString(this BinaryReader br)
+        {
+            var count = br.ReadInt32();
+            var bytes = br.ReadBytes(count);
+
+            return SerializeStringEncoding.GetString(bytes);
+            //return SaveTools.Windows1251.GetString(br.ReadBytes(br.ReadInt32()));
+        }
+
+        /// <summary>
+        /// Читает строку размером до 256 символов
+        /// </summary>
+        public static string ReadShortString(this BinaryReader br)
+        {
+            return SerializeStringEncoding.GetString(br.ReadBytes(br.ReadByte()));
+        }
+
+        public static byte[] GetBytesANSI255String(this string s)
+        {
+            return SerializeStringEncoding.GetBytes(s);
+        }
+
+        /// <summary>
+        /// Записывает строку с максимальной длиной в 255 символов
+        /// </summary>
+        public static void WriteShortString(this BinaryWriter bw, string s)
+        {
+            bw.Write((byte)s.Length);
+            bw.Write(s.GetBytesANSI255String());
+        }
+
+        /// <summary>
+        /// Записывает строку с любым размером
+        /// </summary>
+        public static void WriteFullstring(this BinaryWriter bw, string s)
+        {
+            bw.Write(s.Length);
+            bw.Write(s.GetBytesANSI255String());
+        }
+
+        public static double NextDouble(this Random rnd, double left, double right)
+        {
+            return rnd.NextDouble() * (right - left) + left;
+        }
+
+        public static string Percent(this double d)
+        {
+            return $"{(int)(d * 100)}%";
+        }
+
         public static string JoinIntoString<T>(this IEnumerable<T> e, string delim)
         {
             var g = e.GetEnumerator();
@@ -47,7 +102,7 @@ namespace Tropegenbase
         public static string Opis<T>(this T t) where T : Enum => $"{t.GetType().Lang()}: {t.Lang()}";
         public static string Lang(this string s) => Data.Lang.Current.Strings.ContainsKey(s) ? Data.Lang.Current.Strings[s] : s;
         public static string Lang(this Enum e) => Data.Lang.Current.Strings.ContainsKey($"{e.GetType().Name}.{e}") ? Data.Lang.Current[$"{e.GetType().Name}.{e}"] : e.ToString();
-        public static string Lang(this Type t) => Data.Lang.Current.Strings.ContainsKey(t.FullName) ? Data.Lang.Current[t.FullName] : t.FullName;
+        public static string Lang(this Type t) => Data.Lang.Current.Strings.ContainsKey(t.FullName) ? Data.Lang.Current[t.FullName] : t.Name;
         public static string LangEnumType<T>(this T t) where T: Enum => Data.Lang.Current.Strings.ContainsKey(CachedEnum<T>.Type.FullName) ? Data.Lang.Current[CachedEnum<T>.Type.FullName] : CachedEnum<T>.Type.FullName;
         public static T ToEnum<T>(this string s) where T : Enum
         {

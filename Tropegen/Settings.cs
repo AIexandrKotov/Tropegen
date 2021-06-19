@@ -34,7 +34,7 @@ namespace Tropegen
             CB_StaminaLaw.Items.AddRange(CachedEnum<Defaults.StaminaLaw>.Names);
             CB_IntellectLaw.Items.AddRange(CachedEnum<Defaults.IntellectLaw>.Names);
             LoadAll();
-            Text = Lang.Current["WF_SettingsForm"];
+            Text = Lang.Current["Settings"];
             HelpInfoLabel.Text = Lang.Current["WF_STG_Loaded"];
         }
 

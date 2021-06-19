@@ -21,7 +21,11 @@ namespace Tropegen
             usedLabel.Text = "thanks to mydata.biz";
             versionLabel.Text = Tropegenbase.GlobalAssemblyVersion.VersionInfo;
             RandomButton.Text = Lang.Current["WF_RandomButton"];
-            SettingsButton.Text = Lang.Current["WF_SettingsButton"];
+            SettingsButton.Text = Lang.Current["Settings"];
+            RunExtendedButton.Text = Lang.Current["WF_RunExtended"];
+#if !DEBUG
+            RunExtendedButton.Visible = false;
+#endif
         }
 
         private uint last_id;
@@ -51,12 +55,20 @@ namespace Tropegen
         private void SettingsButton_Click(object sender, EventArgs e)
         {
             var sets = new Settings();
-            sets.FormClosed += (o, e2) =>
+            sets.ShowDialog();
+        }
+
+        private void RunExtendedButton_Click(object sender, EventArgs e)
+        {
+            var ext = new Extended();
+            ext.FormClosed += (o, e2) =>
             {
+                Visible = true;
                 Enabled = true;
             };
             Enabled = false;
-            sets.Show();
+            Visible = false;
+            ext.Show();
         }
     }
 }

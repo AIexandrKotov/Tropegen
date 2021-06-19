@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Tropegenbase.Data
 {
-    public class Lang
+    public class Lang : ICloneable
     {
         public static string Get(string s) => Current.Strings.ContainsKey(s) ? Current.Strings[s] : s;
 
@@ -56,9 +56,26 @@ namespace Tropegenbase.Data
             Surnames = surnames.Where(x => x.Item2 >= pop).Select(x => x.Item1).ToArray();
         }
 
+        public static int Case(int a)
+        {
+            a %= 100;
+            if (a > 20) a %= 10;
+            else a %= 20;
+            if (a == 0 || a >= 5) return 1;
+            if (a == 1) return 2;
+            return 3;
+        }
+
         public string this[string key]
         {
             get => Get(key);
+        }
+
+        public object Clone()
+        {
+            var lang = new Lang();
+            lang.Strings = new Dictionary<string, string>(Strings);
+            return lang;
         }
 
         public Dictionary<string, string> Strings { get; internal set; } = new Dictionary<string, string>();
@@ -87,10 +104,25 @@ namespace Tropegenbase.Data
                     if (s.StartsWith("//") || string.IsNullOrWhiteSpace(s)) continue;
 
                     var splitter = s.IndexOf('=');
-                    lang.Strings.Add(s.Substring(0, splitter), s.Substring(splitter + 1, s.Length - splitter - 1));
+                    lang.Strings[s.Substring(0, splitter)] = s.Substring(splitter + 1, s.Length - splitter - 1);
                 }
             }
             return lang;
+        }
+
+        static void ReadToLang(Lang lang, Stream stream)
+        {
+            using (var tr = new StreamReader(stream))
+            {
+                while (!tr.EndOfStream)
+                {
+                    var s = tr.ReadLine();
+                    if (s.StartsWith("//") || string.IsNullOrWhiteSpace(s)) continue;
+
+                    var splitter = s.IndexOf('=');
+                    lang.Strings[s.Substring(0, splitter)] = s.Substring(splitter + 1, s.Length - splitter - 1);
+                }
+            }
         }
 
         public static readonly int
@@ -105,7 +137,8 @@ namespace Tropegenbase.Data
             Default = lang;
             if (File.Exists("Lang.dat"))
             {
-                using (var stream = File.OpenRead("Lang.dat")) External = ReadLang(stream);
+                External = (Lang)Default.Clone();
+                using (var stream = File.OpenRead("Lang.dat")) ReadToLang(External, stream);
                 Current = External;
             }
             else Current = Default;

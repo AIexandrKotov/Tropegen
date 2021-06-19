@@ -8,7 +8,7 @@ using Tropegenbase.Data;
 
 namespace Tropegenbase
 {
-    static class RandomationLawHelper
+    public static class RandomationLawHelper
     {
         static List<Type> types = new List<Type>();
         public static Type[] Types;
@@ -27,6 +27,13 @@ namespace Tropegenbase
             add(CachedEnum<Archetypes.Morality>.Type, Defaults.RandomLaw_Morality);
             add(CachedEnum<Archetypes.Protest>.Type, Defaults.RandomLaw_Protest);
             add(CachedEnum<Archetypes.Political>.Type, Defaults.RandomLaw_Political);
+            add(CachedEnum<Archetypes.PhysicalPower>.Type, Defaults.RandomLaw_PhysicalPower);
+            add(CachedEnum<Archetypes.MagicPower>.Type, Defaults.RandomLaw_MagicPower);
+            add(CachedEnum<Archetypes.WillPower>.Type, Defaults.RandomLaw_WillPower);
+            add(CachedEnum<Archetypes.Stamina>.Type, Defaults.RandomLaw_Stamina);
+            add(CachedEnum<Archetypes.Intellect>.Type, Defaults.RandomLaw_Intellect);
+            add(CachedEnum<Archetypes.HeightType>.Type, Defaults.RandomLaw_HeightType);
+            add(CachedEnum<Archetypes.EyesColor>.Type, Defaults.RandomLaw_EyesColor);
             Types = types.ToArray();
         }
     }

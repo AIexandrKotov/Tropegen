@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defaults>
+  <AgeHeights womandecreaser="0.9">
+    <AgeHeight leftvalue="6" rightvalue="12" modifierleft="0.7" modifierright="0.875"/>
+    <AgeHeight leftvalue="12" rightvalue="18" modifierleft="0.875" modifierright="1"/>
+    <AgeHeight leftvalue="18" rightvalue="46" modifierleft="1" modifierright="1"/>
+    <AgeHeight leftvalue="46" rightvalue="68" modifierleft="1" modifierright="0.95"/>
+    <AgeHeight leftvalue="68" rightvalue="80" modifierleft="0.95" modifierright="0.93"/>
+    <AgeHeight leftvalue="80" rightvalue="100" modifierleft="0.93" modifierright="0.9"/>
+  </AgeHeights>
   <AgeTypeRandomLaws>
     <AgeTypeRandomLaw law="All">
       <AgeTypePercent chance="0.1" value="Child"/>
@@ -96,4 +104,22 @@
       <IntellectPercent chance="0.03" value="Supermind"/>
     </IntellectRandomLaw>
   </IntellectRandomLaws>
+  <HeightTypeRandomLaws>
+    <HeightTypeRandomLaw law="All">
+      <HeightTypePercent chance="0.2" value="Small"/>
+      <HeightTypePercent chance="0.7" value="Ordinary"/>
+      <HeightTypePercent chance="0.1" value="Big"/>
+    </HeightTypeRandomLaw>
+  </HeightTypeRandomLaws>
+  <EyesColorRandomLaws>
+    <EyesColorRandomLaw law="All">
+      <EyesColorPercent chance="0.75" value="Brown"/>
+      <EyesColorPercent chance="0.10" value="Cyan"/>
+      <EyesColorPercent chance="0.05" value="Walnut"/>
+      <EyesColorPercent chance="0.05" value="Amber"/>
+      <EyesColorPercent chance="0.03" value="Gray"/>
+      <EyesColorPercent chance="0.019" value="Green"/>
+      <EyesColorPercent chance="0.001" value="Heterochromia"/>
+    </EyesColorRandomLaw>
+  </EyesColorRandomLaws>
 </Defaults>

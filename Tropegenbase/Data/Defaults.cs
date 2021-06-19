@@ -19,8 +19,9 @@ namespace Tropegenbase.Data
             Normal,
         }
 
+        public const AgeTypeLaw DefaultAgeTypeRandomLaw = AgeTypeLaw.All;
         static Dictionary<AgeTypeLaw, RandomationLaw<AgeType>.PercentLaw> agetypelaw = new Dictionary<AgeTypeLaw, RandomationLaw<AgeType>.PercentLaw>();
-        private static AgeTypeLaw _atl = AgeTypeLaw.Normal;
+        private static AgeTypeLaw _atl = DefaultAgeTypeRandomLaw;
         public static AgeTypeLaw CurrentAgeTypeRandomLaw
         {
             get => _atl;
@@ -36,8 +37,9 @@ namespace Tropegenbase.Data
             Normal,
         }
 
+        public const MoralityLaw DefaultMoralityRandomLaw = MoralityLaw.All;
         static Dictionary<MoralityLaw, RandomationLaw<Morality>.PercentLaw> moralitylaw = new Dictionary<MoralityLaw, RandomationLaw<Morality>.PercentLaw>();
-        private static MoralityLaw _mrl = MoralityLaw.All;
+        private static MoralityLaw _mrl = DefaultMoralityRandomLaw;
         public static MoralityLaw CurrentMoralityRandomLaw
         {
             get => _mrl;
@@ -52,8 +54,9 @@ namespace Tropegenbase.Data
             All,
         }
 
+        public const ProtestLaw DefaultProtestRandomLaw = ProtestLaw.All;
         static Dictionary<ProtestLaw, RandomationLaw<Protest>.PercentLaw> protestlaw = new Dictionary<ProtestLaw, RandomationLaw<Protest>.PercentLaw>();
-        private static ProtestLaw _prtl = ProtestLaw.All;
+        private static ProtestLaw _prtl = DefaultProtestRandomLaw;
         public static ProtestLaw CurrentProtestRandomLaw
         {
             get => _prtl;
@@ -68,8 +71,9 @@ namespace Tropegenbase.Data
             All,
         }
 
+        public const PoliticalLaw DefaultPoliticalRandomLaw = PoliticalLaw.All;
         static Dictionary<PoliticalLaw, RandomationLaw<Political>.PercentLaw> politicallaw = new Dictionary<PoliticalLaw, RandomationLaw<Political>.PercentLaw>();
-        private static PoliticalLaw _pol = PoliticalLaw.All;
+        private static PoliticalLaw _pol = DefaultPoliticalRandomLaw;
         public static PoliticalLaw CurrentPoliticalRandomLaw
         {
             get => _pol;
@@ -84,8 +88,9 @@ namespace Tropegenbase.Data
             All,
         }
 
+        public const PhysicalPowerLaw DefaultPhysicalPowerRandomLaw = PhysicalPowerLaw.All;
         static Dictionary<PhysicalPowerLaw, RandomationLaw<PhysicalPower>.PercentLaw> physicalpowerlaw = new Dictionary<PhysicalPowerLaw, RandomationLaw<PhysicalPower>.PercentLaw>();
-        private static PhysicalPowerLaw _ppl = PhysicalPowerLaw.All;
+        private static PhysicalPowerLaw _ppl = DefaultPhysicalPowerRandomLaw;
         public static PhysicalPowerLaw CurrentPhysicalPowerRandomLaw
         {
             get => _ppl;
@@ -100,8 +105,9 @@ namespace Tropegenbase.Data
             All,
         }
 
+        public const MagicPowerLaw DefaultMagicPowerRandomLaw = MagicPowerLaw.All;
         static Dictionary<MagicPowerLaw, RandomationLaw<MagicPower>.PercentLaw> magicpowerlaw = new Dictionary<MagicPowerLaw, RandomationLaw<MagicPower>.PercentLaw>();
-        private static MagicPowerLaw _mpl = MagicPowerLaw.All;
+        private static MagicPowerLaw _mpl = DefaultMagicPowerRandomLaw;
         public static MagicPowerLaw CurrentMagicPowerRandomLaw
         {
             get => _mpl;
@@ -115,9 +121,10 @@ namespace Tropegenbase.Data
         {
             All,
         }
-
+        
+        public const WillPowerLaw DefaultWillPowerRandomLaw = WillPowerLaw.All;
         static Dictionary<WillPowerLaw, RandomationLaw<WillPower>.PercentLaw> willpowerlaw = new Dictionary<WillPowerLaw, RandomationLaw<WillPower>.PercentLaw>();
-        private static WillPowerLaw _wpl = WillPowerLaw.All;
+        private static WillPowerLaw _wpl = DefaultWillPowerRandomLaw;
         public static WillPowerLaw CurrentWillPowerRandomLaw
         {
             get => _wpl;
@@ -132,8 +139,9 @@ namespace Tropegenbase.Data
             All,
         }
 
+        public const StaminaLaw DefaultStaminaRandomLaw = StaminaLaw.All;
         static Dictionary<StaminaLaw, RandomationLaw<Stamina>.PercentLaw> staminalaw = new Dictionary<StaminaLaw, RandomationLaw<Stamina>.PercentLaw>();
-        private static StaminaLaw _sl = StaminaLaw.All;
+        private static StaminaLaw _sl = DefaultStaminaRandomLaw;
         public static StaminaLaw CurrentStaminaRandomLaw
         {
             get => _sl;
@@ -148,14 +156,66 @@ namespace Tropegenbase.Data
             All,
         }
 
+        public const IntellectLaw DefaultIntellectRandomLaw = IntellectLaw.All;
         static Dictionary<IntellectLaw, RandomationLaw<Intellect>.PercentLaw> intellectlaw = new Dictionary<IntellectLaw, RandomationLaw<Intellect>.PercentLaw>();
-        private static IntellectLaw _il = IntellectLaw.All;
+        private static IntellectLaw _il = DefaultIntellectRandomLaw;
         public static IntellectLaw CurrentIntellectRandomLaw
         {
             get => _il;
             set => _il = value;
         }
         internal static Enum RandomLaw_Intellect(Random rnd) => intellectlaw[_il].Get(rnd.NextDouble());
+        #endregion        
+        
+        #region HeightTypeLaw
+        public enum HeightTypeLaw
+        {
+            All,
+        }
+
+        public const HeightTypeLaw DefaultHeightTypeRandomLaw = HeightTypeLaw.All;
+        static Dictionary<HeightTypeLaw, RandomationLaw<HeightType>.PercentLaw> heighttypelaw = new Dictionary<HeightTypeLaw, RandomationLaw<HeightType>.PercentLaw>();
+        private static HeightTypeLaw _htl = DefaultHeightTypeRandomLaw;
+        public static HeightTypeLaw CurrentHeightTypeRandomLaw
+        {
+            get => _htl;
+            set => _htl = value;
+        }
+        internal static Enum RandomLaw_HeightType(Random rnd) => heighttypelaw[_htl].Get(rnd.NextDouble());
+        #endregion
+
+        #region EyesColorLaw
+        public enum EyesColorLaw
+        {
+            All,
+        }
+
+        public const EyesColorLaw DefaultEyesColorRandomLaw = EyesColorLaw.All;
+        static Dictionary<EyesColorLaw, RandomationLaw<EyesColor>.PercentLaw> eyescolorlaw = new Dictionary<EyesColorLaw, RandomationLaw<EyesColor>.PercentLaw>();
+        private static EyesColorLaw _ecl = DefaultEyesColorRandomLaw;
+        public static EyesColorLaw CurrentEyesColorRandomLaw
+        {
+            get => _ecl;
+            set => _ecl = value;
+        }
+        internal static Enum RandomLaw_EyesColor(Random rnd) => eyescolorlaw[_ecl].Get(rnd.NextDouble());
+        #endregion
+
+
+        #region Other
+        static (int, int, double, double)[] AHM;
+        public static double GetAgeHeightDecrease(int age)
+        {
+            for (var i = 0; i < AHM.Length; i++)
+            {
+                if (age >= AHM[i].Item1 && age < AHM[i].Item2)
+                {
+                    return (float)((age - AHM[i].Item1) / ((double)AHM[i].Item2 - AHM[i].Item1) * (AHM[i].Item4 - AHM[i].Item3) + AHM[i].Item3);
+                }
+            }
+            return 1.0;
+        }
+        public static double WomanDecrease { get; private set; }
         #endregion
 
         #region XmlRead
@@ -169,6 +229,17 @@ namespace Tropegenbase.Data
             {
                 switch (rndlaws.Name)
                 {
+                    case "AgeHeights":
+                        {
+                            WomanDecrease = rndlaws.GetAttribute("womandecreaser").ToDouble();
+                            var ahm = new List<(int, int, double, double)>();
+                            foreach (XmlElement ageheight in rndlaws)
+                            {
+                                ahm.Add((ageheight.GetAttribute("leftvalue").ToInt32(), ageheight.GetAttribute("rightvalue").ToInt32(), ageheight.GetAttribute("modifierleft").ToDouble(), ageheight.GetAttribute("modifierright").ToDouble()));
+                            }
+                            AHM = ahm.ToArray();
+                        }
+                        break;
                     case "AgeTypeRandomLaws":
                         {
                             foreach (XmlElement rndlaw in rndlaws)
@@ -308,6 +379,36 @@ namespace Tropegenbase.Data
                             }
                         }
                         break;
+                    case "HeightTypeRandomLaws":
+                        {
+                            foreach (XmlElement rndlaw in rndlaws)
+                            {
+                                var value = rndlaw.GetAttribute("law").ToEnum<HeightTypeLaw>();
+                                var x = new RandomationLaw<HeightType>.PercentLaw();
+                                foreach (XmlElement val in rndlaw)
+                                {
+                                    x.Add((val.GetAttribute("chance").ToDouble(), val.GetAttribute("value").ToEnum<HeightType>()));
+                                }
+                                x.Init();
+                                heighttypelaw.Add(value, x);
+                            }
+                        }
+                        break;
+                    case "EyesColorRandomLaws":
+                        {
+                            foreach (XmlElement rndlaw in rndlaws)
+                            {
+                                var value = rndlaw.GetAttribute("law").ToEnum<EyesColorLaw>();
+                                var x = new RandomationLaw<EyesColor>.PercentLaw();
+                                foreach (XmlElement val in rndlaw)
+                                {
+                                    x.Add((val.GetAttribute("chance").ToDouble(), val.GetAttribute("value").ToEnum<EyesColor>()));
+                                }
+                                x.Init();
+                                eyescolorlaw.Add(value, x);
+                            }
+                        }
+                        break;
 
                 }
             }
@@ -316,14 +417,8 @@ namespace Tropegenbase.Data
         internal static void Init()
         {
             var assembly = Assembly.GetExecutingAssembly();
-            if (File.Exists("Defaults.xml"))
-            {
-                using (var s = File.OpenRead("Defaults.xml")) ReadXmlFile(s);
-            }
-            else
-            {
-                using (var s = assembly.GetManifestResourceStream("Tropegenbase.Data.Defaults.xml")) ReadXmlFile(s);
-            }
+            using (var s = assembly.GetManifestResourceStream("Tropegenbase.Data.Defaults.xml")) ReadXmlFile(s);
+            if (File.Exists("Defaults.xml")) using (var s = File.OpenRead("Defaults.xml")) ReadXmlFile(s);
         }
 
         static Defaults()

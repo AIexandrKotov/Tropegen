@@ -1,4 +1,20 @@
 ﻿Tropegenbase.Characters.Character=Персонаж
+Appearance=Внешность
+Personality=Личность
+Social=Социальное
+Forces=Характеристики
+
+Character=Персонаж
+Saved=Сохраненные
+Search=Поиск
+Seed=Сид
+
+Name=Имя
+Surname=Фамилия
+Gender=Пол
+BirthDate=День рождения
+Age=Возраст
+Title=Описание
 
 Tropegenbase.Characters.Archetypes+BiologicalGender=Пол
 BiologicalGender.Male=Мужской
@@ -20,7 +36,10 @@ Morality.Gray=Серая
 Morality.DarkGray=Тёмно-серая
 Morality.Black=Чёрная
 
-years=лет
+years1=лет
+years2=год
+years3=года
+
 birthdate=День рождения
 Month1=января
 Month2=февраля
@@ -38,6 +57,9 @@ Month12=декабря
 
 
 WF_RandomButton=Случайный
+Save=Сохранить
+Random=Случайный
+New=Новый
 
 Changes.VeryPlus=↑
 Changes.Plus=+
@@ -68,7 +90,7 @@ Protest.Extremist=Экстремизм
 Protest.Terrorist=Терроризм
 Protest.Aboveit=Выше этого
 
-Tropegenbase.Characters.Archetypes+Political=Политические предпочтения
+Tropegenbase.Characters.Archetypes+Political=Полит. пред.
 Political.Apolit=Аполитичные
 Political.Neutral=Нейтральные
 Political.Centrist=Центристские
@@ -108,12 +130,52 @@ Stamina.Hardy=Невероятная
 Tropegenbase.Characters.Archetypes+Intellect=Интеллект
 Intellect.None=Очень низкий
 Intellect.Stupid=Низкий
-Intellect.Ordinary=Обыкновенный
+Intellect.Ordinary=Обычный
 Intellect.Smart=Высокий
 Intellect.Supermind=Сверхразум
 
+Tropegenbase.Characters.Archetypes+EyesColor=Цвет глаз
+EyesColor.Brown=Карий
+EyesColor.Walnut=Ореховый
+EyesColor.Green=Зелёный
+EyesColor.Gray=Серый
+EyesColor.Cyan=Голубой
+EyesColor.Amber=Янтарный
+EyesColor.Heterochromia=Гетерохромия
+
+Tropegenbase.Characters.Archetypes+HairColor=Цвет волос
+HairColor.Blonde=Блонд
+HairColor.Light_Brown=Русый
+HairColor.Chestnut=Каштановый
+HairColor.Brunette=Брюнет
+HairColor.Red=Рыжий
+HairColor.Artificial_Coloring=Искусственный
+
+Tropegenbase.Characters.Archetypes+HairLength=Длина волос
+HairLength.Zero=Лысость
+HairLength.Short=Короткие
+HairLength.Middle=Средние
+HairLength.Long=Длинные
+
+Tropegenbase.Characters.Archetypes+BeautyType=Красивость
+BeautyType.VeryUgly=Чудище
+BeautyType.Brutal=Брутальная
+BeautyType.Ugly=Уродливая
+BeautyType.Ordinary=Обычная
+BeautyType.Pretty=Милая
+BeautyType.Cute=Красивая
+
+Weight=Вес
+kg=кг
+Fat=жира
+Muscles=мышц
+Height=Рост
+cm=см
+
+RandomationLaws=Законы рандомизации
+
 WF_STG_Loaded=Информация загружена
-WF_STG_Defaulted=По умолчанию
+Default=По умолчанию
 
 WF_SettingsButton=Настройки
 WF_STG_LangGB=Описание
@@ -121,9 +183,11 @@ WF_STG_RLGB=Законы рандомизации
 WF_STG_Names=Держателей имени:
 WF_STG_Surnames=Держателей фамилии:
 WF_STG_DefaultB=По умолчанию
+WF_RunExtended=Расширенная
 
-WF_SettingsForm=Настройки
+Settings=Настройки
 
+CFCHelp=Это изменения в будущем определенного качества персонажа. Или же вы можете придумать себе их использование в другом контексте. Значения для сил влияют на итоговую силу.
 HelpInfo_AgeTypeLaw.All=Все возрастные типы
 HelpInfo_AgeTypeLaw.Normal=Возрастные типы без детей и стариков
 HelpInfo_MoralityLaw.All=Все виды морали
