@@ -1439,11 +1439,6 @@ namespace Tropegen
             0,
             0,
             0});
-            this.WeightValue.Minimum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
             this.WeightValue.Name = "WeightValue";
             this.WeightValue.Size = new System.Drawing.Size(60, 20);
             this.WeightValue.TabIndex = 36;
