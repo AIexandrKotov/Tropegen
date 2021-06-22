@@ -27,7 +27,7 @@ namespace Tropegenbase.Characters
         private bool
             title_inited, appear_inited, person_inited, forces_inited;
 
-        private static void GenerateFiveChanges(Random rnd, Archetypes.Changes[] ret)
+        internal static void GenerateFiveChanges(Random rnd, Archetypes.Changes[] ret)
         {
             var integer = rnd.Next();
             for (var i = 0; i < 5; i++)
@@ -70,26 +70,7 @@ namespace Tropegenbase.Characters
 
         private void InitHeight()
         {
-            inCh.HeightType = inCh.HeightType.Random(Seed);
-            switch (inCh.HeightType)
-            {
-                case Archetypes.HeightType.Small:
-                    {
-                        inCh.Height = Seed.Next(170, 180);
-                    }
-                    break;
-                case Archetypes.HeightType.Ordinary:
-                    {
-                        inCh.Height = Seed.Next(180, 190);
-                    }
-                    break;
-                case Archetypes.HeightType.Big:
-                    {
-                        inCh.Height = Seed.Next(190, 210);
-                    }
-                    break;
-            }
-            inCh.Height = (int)(inCh.Height * Defaults.GetAgeHeightDecrease(inCh.Age) * (inCh.Gender == Archetypes.BiologicalGender.Female ? Defaults.WomanDecrease : 1.0));
+            inCh.RandomationHeight(Seed);
         }
 
         private void InitAge()
@@ -159,97 +140,7 @@ namespace Tropegenbase.Characters
 
         private void InitPhysique()
         {
-            inCh.Physique = inCh.Physique.Random(Seed);
-            inCh.PhysiqueStatus = inCh.PhysiqueStatus.Random(Seed);
-
-            switch (inCh.Physique)
-            {
-                case Archetypes.Physique.Ektomorph:
-                    {
-                        switch (inCh.PhysiqueStatus)
-                        {
-                            case Archetypes.PhysiqueStatus.Small:
-                                {
-                                    inCh.Weight = Seed.Next(500, 600);
-                                    inCh.Fat = Seed.NextDouble(0.05, 0.1);
-                                    inCh.Muscles = Seed.NextDouble(0, 0.05);
-                                }
-                                break;
-                            case Archetypes.PhysiqueStatus.Ordinary:
-                                {
-                                    inCh.Weight = Seed.Next(500, 600);
-                                    inCh.Fat = Seed.NextDouble(0.05, 0.1);
-                                    inCh.Muscles = Seed.NextDouble(0.05, 0.15);
-                                }
-                                break;
-                            case Archetypes.PhysiqueStatus.Big:
-                                {
-                                    inCh.Weight = Seed.Next(600, 700);
-                                    inCh.Fat = Seed.NextDouble(0.05, 0.1);
-                                    inCh.Muscles = Seed.NextDouble(0.15, 0.25);
-                                }
-                                break;
-                        }
-                    }
-                    break;
-                case Archetypes.Physique.Endomorph:
-                    {
-                        switch (inCh.PhysiqueStatus)
-                        {
-                            case Archetypes.PhysiqueStatus.Small:
-                                {
-                                    inCh.Weight = Seed.Next(700, 800);
-                                    inCh.Fat = Seed.NextDouble(0.1, 0.15);
-                                    inCh.Muscles = Seed.NextDouble(0, 0.1);
-                                }
-                                break;
-                            case Archetypes.PhysiqueStatus.Ordinary:
-                                {
-                                    inCh.Weight = Seed.Next(800, 900);
-                                    inCh.Fat = Seed.NextDouble(0.15, 0.25);
-                                    inCh.Muscles = Seed.NextDouble(0.05, 0.25);
-                                }
-                                break;
-                            case Archetypes.PhysiqueStatus.Big:
-                                {
-                                    inCh.Weight = Seed.Next(900, 1200);
-                                    inCh.Fat = Seed.NextDouble(0.25, 0.75);
-                                    inCh.Muscles = Seed.NextDouble(0, 0.1);
-                                }
-                                break;
-                        }
-                    }
-                    break;
-                case Archetypes.Physique.Mesomorph:
-                    {
-                        switch (inCh.PhysiqueStatus)
-                        {
-                            case Archetypes.PhysiqueStatus.Small:
-                                {
-                                    inCh.Weight = Seed.Next(700, 800);
-                                    inCh.Fat = Seed.NextDouble(0.1, 0.15);
-                                    inCh.Muscles = Seed.NextDouble(0.15, 0.25);
-                                }
-                                break;
-                            case Archetypes.PhysiqueStatus.Ordinary:
-                                {
-                                    inCh.Weight = Seed.Next(800, 1000);
-                                    inCh.Fat = Seed.NextDouble(0.1, 0.15);
-                                    inCh.Muscles = Seed.NextDouble(0.25, 0.35);
-                                }
-                                break;
-                            case Archetypes.PhysiqueStatus.Big:
-                                {
-                                    inCh.Weight = Seed.Next(1000, 1200);
-                                    inCh.Fat = Seed.NextDouble(0.1, 0.15);
-                                    inCh.Muscles = Seed.NextDouble(0.45, 0.65);
-                                }
-                                break;
-                        }
-                    }
-                    break;
-            }
-            inCh.Weight = (int)(inCh.Weight * Math.Pow(inCh.Height / 180.0, 1.25));
+            inCh.RandomationPhysique(Seed);
         }
 
         public void InitAppearance()
@@ -260,18 +151,8 @@ namespace Tropegenbase.Characters
                 InitTitle();
             }
             appear_inited = true;
-            InitHeight();
-            InitPhysique();
-            inCh.EyesColor = inCh.EyesColor.Random(Seed);
-            inCh.HairColor = inCh.HairColor.Random(Seed);
-            if (inCh.HairColor == Archetypes.HairColor.Artificial_Coloring)
-            {
-                var bs = new byte[3];
-                Seed.NextBytes(bs);
-                inCh.HairColorRGB = Color.FromArgb(bs[0], bs[1], bs[2]);
-            }
-            inCh.HairLength = inCh.HairLength.Random(Seed);
-            inCh.BeautyType = inCh.BeautyType.Random(Seed);
+            inCh.RandomationAppearance1(Seed);
+            inCh.RandomationAppearance2(Seed);
         }
 
         public void InitPerson()
@@ -283,22 +164,7 @@ namespace Tropegenbase.Characters
                 InitAppearance();
             }
             person_inited = true;
-            inCh.Morality = inCh.Morality.Random(Seed);
-            GenerateFiveChanges(Seed, inCh.MoralityFuture);
-
-            inCh.Ethical = inCh.Ethical.Random(Seed);
-            GenerateFiveChanges(Seed, inCh.EthicalFuture);
-
-            inCh.Ego = inCh.Ego.Random(Seed);
-            GenerateFiveChanges(Seed, inCh.EgoFuture);
-
-            inCh.Idea = inCh.Idea.Random(Seed);
-            GenerateFiveChanges(Seed, inCh.IdeaFuture);
-
-            inCh.Protest = inCh.Protest.Random(Seed);
-            inCh.Political = inCh.Political.Random(Seed);
-            inCh.Empathy = inCh.Empathy.Random(Seed);
-            inCh.Emotional = inCh.Emotional.Random(Seed);
+            inCh.RandomationPerson(Seed);
         }
 
         public void InitForces()
@@ -311,21 +177,12 @@ namespace Tropegenbase.Characters
                 InitPerson();
             }
             forces_inited = true;
-            inCh.PhysicalPower = inCh.PhysicalPower.Random(Seed);
-            GenerateFiveChanges(Seed, inCh.PhysicalPowerFuture);
+            inCh.RandomationForces(Seed);
+        }
 
-            inCh.MagicPower = inCh.MagicPower.Random(Seed);
-            GenerateFiveChanges(Seed, inCh.MagicPowerFuture);
-
-            inCh.WillPower = inCh.WillPower.Random(Seed);
-            GenerateFiveChanges(Seed, inCh.WillPowerFuture);
-
-            inCh.Stamina = inCh.Stamina.Random(Seed);
-            GenerateFiveChanges(Seed, inCh.StaminaFuture);
-
-            inCh.Intellect = inCh.Intellect.Random(Seed);
-            GenerateFiveChanges(Seed, inCh.IntellectFuture);
-
+        public void InitSocial()
+        {
+            inCh.RandomSocial(Seed);
         }
 
         public Character ToCharacter()
@@ -339,6 +196,7 @@ namespace Tropegenbase.Characters
             InitAppearance();
             InitPerson();
             InitForces();
+            InitSocial();
             return inCh;
         }
     }

@@ -145,11 +145,17 @@ namespace Tropegenbase.Characters
         public enum Empathy
         {
             None,
+            Low,
+            Ordinary,
+            High,
         }
 
         public enum Emotional
         {
             None,
+            Low,
+            Ordinary,
+            High,
         }
         #endregion
 
@@ -159,7 +165,17 @@ namespace Tropegenbase.Characters
         /// </summary>
         public enum SocialStatus
         {
-            None,
+            //-- old
+            Slave, //раб
+            Villager, //крестьянин
+            Commoner, //мещанин
+            Honorary, //почетный гражданин
+            Nobleman, //дворянин
+            //-- now
+            Worker,
+            MiddleClass,
+            Elite,
+            Magnate,
         }
 
         /// <summary>
@@ -167,7 +183,9 @@ namespace Tropegenbase.Characters
         /// </summary>
         public enum Sexuality
         {
-            None,
+            Chaste,
+            Ordinary,
+            Dissolute,
         }
 
         /// <summary>
@@ -175,7 +193,12 @@ namespace Tropegenbase.Characters
         /// </summary>
         public enum Responsibility
         {
-            None,
+            Observer,
+            Performer,
+            Creative,
+            Businessman,
+            Manager,
+            Explorer,
         }
 
         /// <summary>
@@ -183,31 +206,43 @@ namespace Tropegenbase.Characters
         /// </summary>
         public enum Loyalty
         {
-            None,
+            Traitor,
+            Ordinary,
+            Faithful,
         }
 
         /// <summary>
-        /// Адаптивность
+        /// Адаптивность (насколь легко человек может кардинально поменять всё)
         /// </summary>
         public enum Adaptability
         {
-            None,
+            Light,
+            Ordinary,
+            Heavy,
         }
 
         /// <summary>
         /// Доверие людям
         /// </summary>
-        public enum TrustInPeople
+        public enum FaithInPeople
         {
-            None,
+            Schizophrenia,
+            Low,
+            Ordinary,
+            High,
+            Creduility,
         }
 
         /// <summary>
         /// Юмор
         /// </summary>
-        public enum Humor
+        public enum Humour
         {
             None,
+            Sick,
+            Thick,
+            Cutes,
+            SickCutes,
         }
         #endregion
 

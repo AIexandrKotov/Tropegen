@@ -42,7 +42,7 @@ namespace Tropegen
                 Load();
                 File.Delete(Path);
             }
-            Path = Extended.GetPath() + newname + ".tgc";
+            Path = CharacterEditor.GetPath() + newname + ".tgc";
             Name = newname;
             Save();
         }
@@ -54,7 +54,7 @@ namespace Tropegen
 
         public static CharacterFile New(string name)
         {
-            var cf = new CharacterFile(Extended.GetPath() + name + ".tgc");
+            var cf = new CharacterFile(CharacterEditor.GetPath() + name + ".tgc");
             cf.characterlist = new List<Character>();
             return cf;
         }
@@ -62,6 +62,7 @@ namespace Tropegen
         public void Save()
         {
             Character.Save(Path, CharacterList);
+            Edited = false;
         }
 
         public void Load()
@@ -80,12 +81,19 @@ namespace Tropegen
 
         public static List<CharacterFile> CharacterFiles()
         {
-            var filenames = Directory.GetFiles(Extended.GetPath(), "*.tgc");
+            var path = CharacterEditor.GetPath();
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+            var filenames = Directory.GetFiles(path, "*.tgc");
             var ret = new List<CharacterFile>();
             for (var i = 0; i < filenames.Length; i++) ret.Add(new CharacterFile(filenames[i]));
             ret.ForEach(x => x.Load());
             ret.RemoveAll(x => x.Canceled);
             return ret;
+        }
+
+        public static void SaveAll(List<CharacterFile> characterFiles)
+        {
+            characterFiles.ForEach(x => { if (x.Edited) x.Save(); });
         }
     }
 }

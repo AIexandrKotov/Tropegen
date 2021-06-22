@@ -14,8 +14,8 @@ namespace Tropegen
 {
     public partial class CharacterLists : Form
     {
-        public Extended Reference;
-        public CharacterLists(Extended extended)
+        public CharacterEditor Reference;
+        public CharacterLists(CharacterEditor extended)
         {
             InitializeComponent();
             Reference = extended;

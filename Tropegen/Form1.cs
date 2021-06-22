@@ -57,7 +57,7 @@ namespace Tropegen
 
         private void RunExtendedButton_Click(object sender, EventArgs e)
         {
-            var ext = new Extended();
+            var ext = new CharacterEditor();
             ext.FormClosed += (o, e2) =>
             {
                 Visible = true;

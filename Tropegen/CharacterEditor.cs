@@ -14,7 +14,7 @@ using Tropegenbase.Data;
 
 namespace Tropegen
 {
-    public partial class Extended : Form
+    public partial class CharacterEditor : Form
     {
         public static string GetPath() => Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Tropegen\\";
 
@@ -71,6 +71,7 @@ namespace Tropegen
                 CurrentCharacter.Generated = false;
                 CurrentSavedCharacters.Add(CurrentCharacter);
                 UpdateSavedListBox();
+                SavedListBox.SelectedIndex = SavedListBox.Items.Count - 1;
             }
         }
 
@@ -78,13 +79,13 @@ namespace Tropegen
         {
         }
 
-        public Extended()
+        public CharacterEditor()
         {
             InitializeComponent();
 
             FormClosed += (o, e) =>
             {
-                SavedFiles.ForEach(x => { if (x.Edited) x.Save(); });
+                CharacterFile.SaveAll(SavedFiles);
                 File.WriteAllText(GetPath() + "last.dat", CurrentFile);
             };
 
@@ -111,8 +112,8 @@ namespace Tropegen
             ResponsibilityComboBox.Items.AddRange(CachedEnum<Archetypes.Responsibility>.Enums.Select(x => Lang.Get(x.Lang())).ToArray());
             LoyaltyComboBox.Items.AddRange(CachedEnum<Archetypes.Loyalty>.Enums.Select(x => Lang.Get(x.Lang())).ToArray());
             AdaptibilityComboBox.Items.AddRange(CachedEnum<Archetypes.Adaptability>.Enums.Select(x => Lang.Get(x.Lang())).ToArray());
-            TrustinpeopleComboBox.Items.AddRange(CachedEnum<Archetypes.TrustInPeople>.Enums.Select(x => Lang.Get(x.Lang())).ToArray());
-            HumorComboBox.Items.AddRange(CachedEnum<Archetypes.Humor>.Enums.Select(x => Lang.Get(x.Lang())).ToArray());
+            TrustinpeopleComboBox.Items.AddRange(CachedEnum<Archetypes.FaithInPeople>.Enums.Select(x => Lang.Get(x.Lang())).ToArray());
+            HumorComboBox.Items.AddRange(CachedEnum<Archetypes.Humour>.Enums.Select(x => Lang.Get(x.Lang())).ToArray());
 
             SavedGroup.Text = Lang.Get("Saved");
             SearchGroup.Text = Lang.Get("Search");
@@ -122,17 +123,26 @@ namespace Tropegen
             ForcesGroup.Text = Lang.Get("Forces");
             SocialGroup.Text = Lang.Get("Social");
             TitleGroup.Text = Lang.Get("Title");
+            LockRandomsButton.Text = Lang.Get("LockRandoms");
 
             SeedLabel.Text = Lang.Get("Seed") + ":";
             RandomButton.Text = Lang.Get("Random");
             SaveButton.Text = Lang.Get("Save");
             NewButton.Text = Lang.Get("New");
+            FileStripDown.Text = Lang.Get("File");
+            CharacterListsButton.Text = Lang.Get("CharacterLists");
+            SaveAllButton.Text = Lang.Get("SaveAll");
             SettingsStripDown.Text = Lang.Get("Settings");
             Saved_RemoveButton.Text = Lang.Get("Remove");
             Saved_DuplicateButton.Text = Lang.Get("Duplicate");
 
             RandomationLawsButton.Text = Lang.Get("RandomationLaws");
-            CharacterListsButton.Text = Lang.Get("CharacterLists");
+
+            RandomPersonality.Text = Lang.Get("RandomPersonality");
+            RandomAppearance1.Text = Lang.Get("RandomAppHW");
+            RandomAppearance2.Text = Lang.Get("RandomApp2");
+            RandomForces.Text = Lang.Get("RandomForces");
+            RandomSocial.Text = Lang.Get("RandomSocial");
 
             NameLabel.Text = Lang.Get("Name") + ":";
             SurnameLabel.Text = Lang.Get("Surname") + ":";
@@ -153,8 +163,8 @@ namespace Tropegen
             ResponsibilityLabel.Text = Lang.Get(CachedEnum<Archetypes.Responsibility>.Type.Lang()) + ":";
             LoyaltyLabel.Text = Lang.Get(CachedEnum<Archetypes.Loyalty>.Type.Lang()) + ":";
             AdaptibilityLabel.Text = Lang.Get(CachedEnum<Archetypes.Adaptability>.Type.Lang()) + ":";
-            TrustinpeopleLabel.Text = Lang.Get(CachedEnum<Archetypes.TrustInPeople>.Type.Lang()) + ":";
-            HumorLabel.Text = Lang.Get(CachedEnum<Archetypes.Humor>.Type.Lang()) + ":";
+            TrustinpeopleLabel.Text = Lang.Get(CachedEnum<Archetypes.FaithInPeople>.Type.Lang()) + ":";
+            HumourLabel.Text = Lang.Get(CachedEnum<Archetypes.Humour>.Type.Lang()) + ":";
             ForcesPhysical.Text = Lang.Get(CachedEnum<Archetypes.PhysicalPower>.Type.Lang()) + ":";
             ForcesMagic.Text = Lang.Get(CachedEnum<Archetypes.MagicPower>.Type.Lang()) + ":";
             ForcesWill.Text = Lang.Get(CachedEnum<Archetypes.WillPower>.Type.Lang()) + ":";
@@ -214,6 +224,24 @@ namespace Tropegen
             CurrentSavedCharacters = SavedFiles.Find(x => x.Name == CurrentFile).CharacterList;
 
             UpdateCharacterList();
+        }
+
+        public void LockRandoms()
+        {
+            RandomPersonality.Enabled = false;
+            RandomAppearance1.Enabled = false;
+            RandomAppearance2.Enabled = false;
+            RandomForces.Enabled = false;
+            RandomSocial.Enabled = false;
+        }
+
+        public void UnlockRandoms()
+        {
+            RandomPersonality.Enabled = true;
+            RandomAppearance1.Enabled = true;
+            RandomAppearance2.Enabled = true;
+            RandomForces.Enabled = true;
+            RandomSocial.Enabled = true;
         }
 
         public void UpdateCharacterList()
@@ -280,7 +308,7 @@ namespace Tropegen
             LoyaltyComboBox.Text = Lang.Get(ch.Loyalty.Lang());
             AdaptibilityComboBox.Text = Lang.Get(ch.Adaptability.Lang());
             TrustinpeopleComboBox.Text = Lang.Get(ch.TrustInPeople.Lang());
-            HumorComboBox.Text = Lang.Get(ch.Humor.Lang());
+            HumorComboBox.Text = Lang.Get(ch.Humour.Lang());
         }
 
         public void FillTitle(Character ch)
@@ -457,12 +485,12 @@ namespace Tropegen
             cfc.ShowDialog();
         }
 
-        private void SeedTextBox_Click(object sender, EventArgs e)
+        private void SeedTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (uint.TryParse(SeedTextBox.Text, out var i))
+            if (int.TryParse(SeedTextBox.Text, out var i))
             {
                 SeedTextBox.ForeColor = Color.Black;
-                CurrentCharacter = new CharacterBuilder((int)i).Init();
+                CurrentCharacter = new CharacterBuilder(i).Init();
                 UpdateCharacter(CurrentCharacter);
             }
             else SeedTextBox.ForeColor = Color.Red;
@@ -470,10 +498,13 @@ namespace Tropegen
 
         private void RandomButton_Click(object sender, EventArgs e)
         {
-            CurrentCharacter = new CharacterBuilder(GlobalSeed.Next()).Init();
+            var seed = GlobalSeed.Next();
+            if (Environment.TickCount / 5 % 2 == 0) seed *= -1;
+            CurrentCharacter = new CharacterBuilder(seed).Init();
             AddSeedToBuffer(CurrentCharacter.Seed);
             SeedTextBox.Text = CurrentCharacter.Seed.ToString();
             UpdateCharacter(CurrentCharacter);
+            SavedListBox.SelectedIndex = -1;
         }
 
         private void NewButton_Click(object sender, EventArgs e)
@@ -524,6 +555,8 @@ namespace Tropegen
                     {
                         BufferId = BufferSeeds.Count - 1;
                         SeedTextBox.Text = BufferSeeds[BufferId].ToString();
+                        CurrentCharacter = new CharacterBuilder(BufferSeeds[BufferId]).Init();
+                        UpdateCharacter(CurrentCharacter);
                     }
                     else
                     {
@@ -548,6 +581,7 @@ namespace Tropegen
                 SeedTextBox.Text = BufferSeeds[BufferId].ToString();
             }
             if (BufferId == 0) ChPredButton.Enabled = false;
+            SavedListBox.SelectedIndex = -1;
         }
 
         private void ChNextButton_Click(object sender, EventArgs e)
@@ -559,6 +593,7 @@ namespace Tropegen
                 if (BufferId > 0) ChPredButton.Enabled = true;
                 if (BufferId == BufferSeeds.Count - 1) ChNextButton.Enabled = false;
                 SeedTextBox.Text = BufferSeeds[BufferId].ToString();
+                SavedListBox.SelectedIndex = -1;
             }
         }
         #endregion
@@ -749,12 +784,12 @@ namespace Tropegen
 
         private void TrustinpeopleComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CurrentCharacter.TrustInPeople = (Archetypes.TrustInPeople)TrustinpeopleComboBox.SelectedIndex;
+            CurrentCharacter.TrustInPeople = (Archetypes.FaithInPeople)TrustinpeopleComboBox.SelectedIndex;
         }
 
         private void HumorComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CurrentCharacter.Humor = (Archetypes.Humor)HumorComboBox.SelectedIndex;
+            CurrentCharacter.Humour = (Archetypes.Humour)HumorComboBox.SelectedIndex;
         }
 
         private void NameTextBox_TextChanged(object sender, EventArgs e)
@@ -787,6 +822,62 @@ namespace Tropegen
                 UpdateCharacterList();
             };
             cl.ShowDialog();
+        }
+
+        private void SaveAllButton_Click(object sender, EventArgs e)
+        {
+            CharacterFile.SaveAll(SavedFiles);
+        }
+
+        private void RandomPersonality_Click(object sender, EventArgs e)
+        {
+            CurrentCharacter.RandomationPerson(GlobalSeed);
+            FillPerson(CurrentCharacter);
+        }
+
+        private void RandomAppearance1_Click(object sender, EventArgs e)
+        {
+            CurrentCharacter.RandomationAppearance1(GlobalSeed);
+            FillAppearance(CurrentCharacter);
+        }
+
+        private void RandomHairColor_Click(object sender, EventArgs e)
+        {
+            CurrentCharacter.RandomHairColor(GlobalSeed);
+            FillAppearance(CurrentCharacter);
+        }
+
+        private void RandomAppearance2_Click(object sender, EventArgs e)
+        {
+            CurrentCharacter.RandomationAppearance2(GlobalSeed);
+            FillAppearance(CurrentCharacter);
+        }
+
+        private void RandomForces_Click(object sender, EventArgs e)
+        {
+            CurrentCharacter.RandomationForces(GlobalSeed);
+            FillForces(CurrentCharacter);
+            FillPowers(CurrentCharacter);
+        }
+
+        private void RandomSocial_Click(object sender, EventArgs e)
+        {
+            CurrentCharacter.RandomSocial(GlobalSeed);
+            FillSocial(CurrentCharacter);
+        }
+
+        private void LockRandomsButton_Click(object sender, EventArgs e)
+        {
+            if (RandomPersonality.Enabled)
+            {
+                LockRandoms();
+                LockRandomsButton.Text = Lang.Get("UnlockRandoms");
+            }
+            else
+            {
+                UnlockRandoms();
+                LockRandomsButton.Text = Lang.Get("LockRandoms");
+            }
         }
     }
 }

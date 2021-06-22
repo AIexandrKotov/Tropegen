@@ -16,12 +16,12 @@ namespace Tropegen
     public partial class ChangeFiveChanges : Form
     {
         Archetypes.Changes[] Current;
-        Extended Reference;
+        CharacterEditor Reference;
         TextBox TBRef;
 
         public event Action OnUpdate;
 
-        public ChangeFiveChanges(Extended reference, TextBox tbref, string title, Archetypes.Changes[] changes)
+        public ChangeFiveChanges(CharacterEditor reference, TextBox tbref, string title, Archetypes.Changes[] changes)
         {
             InitializeComponent();
             Reference = reference;

@@ -165,6 +165,67 @@ BeautyType.Ordinary=Обычная
 BeautyType.Pretty=Милая
 BeautyType.Cute=Красивая
 
+Tropegenbase.Characters.Archetypes+Empathy=Уровень эмпатии
+Empathy.None=Отсутствует
+Empathy.Low=Низкий
+Empathy.Ordinary=Обычный
+Empathy.High=Высокий
+
+Tropegenbase.Characters.Archetypes+Emotional=Эмоциональность
+Emotional.None=Нет
+Emotional.Low=Слабая
+Emotional.Ordinary=Обычная
+Emotional.High=Сильная
+
+Tropegenbase.Characters.Archetypes+SocialStatus=Соц. статус
+SocialStatus.Slave=Раб
+SocialStatus.Villager=Крестьянин
+SocialStatus.Commoner=Мещанин
+SocialStatus.Honorary=Почетный
+SocialStatus.Nobleman=Дворянин
+
+SocialStatus.Worker=Рабочий
+SocialStatus.MiddleClass=Средний класс
+SocialStatus.Elite=Элита
+SocialStatus.Magnate=Магнат
+
+Tropegenbase.Characters.Archetypes+Sexuality=Секс. поведение
+Sexuality.Chaste=Целомудренное
+Sexuality.Ordinary=Обыкновенное
+Sexuality.Dissolute=Распущенное
+
+Tropegenbase.Characters.Archetypes+Responsibility=Ответственность
+Responsibility.Observer=Наблюдающий
+Responsibility.Performer=Исполняющий
+Responsibility.Creative=Творящий
+Responsibility.Businessman=Делающий
+Responsibility.Manager=Управляющий
+Responsibility.Explorer=Исследующий
+
+Tropegenbase.Characters.Archetypes+Loyalty=Преданность
+Loyalty.Traitor=Предатель
+Loyalty.Ordinary=Обычный
+Loyalty.Faithful=Преданный
+
+Tropegenbase.Characters.Archetypes+Adaptability=Адаптивность
+Adaptability.Light=Свободная
+Adaptability.Ordinary=Обычная
+Adaptability.Heavy=Тяжёлая
+
+Tropegenbase.Characters.Archetypes+FaithInPeople=Доверие
+FaithInPeople.Schizophrenia=Шиза
+FaithInPeople.Low=Низкое
+FaithInPeople.Ordinary=Обычная
+FaithInPeople.High=Высокое
+FaithInPeople.Creduility=Доверчивый
+
+Tropegenbase.Characters.Archetypes+Humour=Юмор
+Humour.None=Отсутствует
+Humour.Sick=Больной
+Humour.Thick=Толстый
+Humour.Cutes=Тонкий
+Humour.SickCutes=Тонкий больной
+
 Weight=Вес
 kg=кг
 Fat=жира
@@ -172,6 +233,8 @@ Muscles=мышц
 Height=Рост
 cm=см
 
+File=Файл
+SaveAll=Сохранить все
 RandomationLaws=Законы рандомизации
 CharacterLists=Списки персонажей
 
@@ -180,6 +243,15 @@ Default=По умолчанию
 Remove=Удалить
 Duplicate=Дублировать
 Rename=Переименовать
+
+RandomPersonality=Случайная личность
+RandomAppHW=Случ. рост и вес
+RandomApp2=Случ. внешность
+RandomForces=Случайные силы
+RandomSocial=Случайное социальное
+
+LockRandoms=Защита от случайных нажатий
+UnlockRandoms=Отключить защиту
 
 WF_SettingsButton=Настройки
 WF_STG_LangGB=Описание

@@ -1,7 +1,7 @@
 ﻿
 namespace Tropegen
 {
-    partial class Extended
+    partial class CharacterEditor
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,11 @@ namespace Tropegen
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Extended));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CharacterEditor));
             this.MainToolStrip = new System.Windows.Forms.ToolStrip();
+            this.FileStripDown = new System.Windows.Forms.ToolStripDropDownButton();
+            this.CharacterListsButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveAllButton = new System.Windows.Forms.ToolStripMenuItem();
             this.SettingsStripDown = new System.Windows.Forms.ToolStripDropDownButton();
             this.RandomationLawsButton = new System.Windows.Forms.ToolStripMenuItem();
             this.SavedListBox = new System.Windows.Forms.ListBox();
@@ -58,7 +61,7 @@ namespace Tropegen
             this.FateTextBox = new System.Windows.Forms.RichTextBox();
             this.SocialGroup = new System.Windows.Forms.GroupBox();
             this.HumorComboBox = new System.Windows.Forms.ComboBox();
-            this.HumorLabel = new System.Windows.Forms.Label();
+            this.HumourLabel = new System.Windows.Forms.Label();
             this.TrustinpeopleComboBox = new System.Windows.Forms.ComboBox();
             this.TrustinpeopleLabel = new System.Windows.Forms.Label();
             this.AdaptibilityComboBox = new System.Windows.Forms.ComboBox();
@@ -188,7 +191,13 @@ namespace Tropegen
             this.SaveButton = new System.Windows.Forms.ToolStripButton();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.CharacterListsButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.RandomPersonality = new System.Windows.Forms.Button();
+            this.RandomAppearance1 = new System.Windows.Forms.Button();
+            this.RandomAppearance2 = new System.Windows.Forms.Button();
+            this.RandomForces = new System.Windows.Forms.Button();
+            this.RandomSocial = new System.Windows.Forms.Button();
+            this.RandomHairColor = new System.Windows.Forms.Button();
+            this.LockRandomsButton = new System.Windows.Forms.ToolStripMenuItem();
             this.MainToolStrip.SuspendLayout();
             this.SavedGroup.SuspendLayout();
             this.SearchGroup.SuspendLayout();
@@ -212,6 +221,7 @@ namespace Tropegen
             // 
             this.MainToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.MainToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FileStripDown,
             this.SettingsStripDown});
             this.MainToolStrip.Location = new System.Drawing.Point(0, 0);
             this.MainToolStrip.Name = "MainToolStrip";
@@ -219,12 +229,42 @@ namespace Tropegen
             this.MainToolStrip.TabIndex = 1;
             this.MainToolStrip.Text = "toolStrip1";
             // 
+            // FileStripDown
+            // 
+            this.FileStripDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.FileStripDown.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CharacterListsButton,
+            this.SaveAllButton});
+            this.FileStripDown.Image = ((System.Drawing.Image)(resources.GetObject("FileStripDown.Image")));
+            this.FileStripDown.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.FileStripDown.Name = "FileStripDown";
+            this.FileStripDown.ShowDropDownArrow = false;
+            this.FileStripDown.Size = new System.Drawing.Size(29, 22);
+            this.FileStripDown.Text = "File";
+            // 
+            // CharacterListsButton
+            // 
+            this.CharacterListsButton.Name = "CharacterListsButton";
+            this.CharacterListsButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.CharacterListsButton.ShowShortcutKeys = false;
+            this.CharacterListsButton.Size = new System.Drawing.Size(180, 22);
+            this.CharacterListsButton.Text = "CharacterLists";
+            this.CharacterListsButton.Click += new System.EventHandler(this.CharacterListsButton_Click);
+            // 
+            // SaveAllButton
+            // 
+            this.SaveAllButton.Name = "SaveAllButton";
+            this.SaveAllButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.SaveAllButton.Size = new System.Drawing.Size(180, 22);
+            this.SaveAllButton.Text = "SaveAll";
+            this.SaveAllButton.Click += new System.EventHandler(this.SaveAllButton_Click);
+            // 
             // SettingsStripDown
             // 
             this.SettingsStripDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.SettingsStripDown.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.RandomationLawsButton,
-            this.CharacterListsButton});
+            this.LockRandomsButton});
             this.SettingsStripDown.Image = ((System.Drawing.Image)(resources.GetObject("SettingsStripDown.Image")));
             this.SettingsStripDown.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SettingsStripDown.Name = "SettingsStripDown";
@@ -235,7 +275,8 @@ namespace Tropegen
             // RandomationLawsButton
             // 
             this.RandomationLawsButton.Name = "RandomationLawsButton";
-            this.RandomationLawsButton.Size = new System.Drawing.Size(180, 22);
+            this.RandomationLawsButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.RandomationLawsButton.Size = new System.Drawing.Size(216, 22);
             this.RandomationLawsButton.Text = "Randomation Laws";
             this.RandomationLawsButton.Click += new System.EventHandler(this.RandomationLawsButton_Click);
             // 
@@ -261,7 +302,7 @@ namespace Tropegen
             this.SavedGroup.Controls.Add(this.Saved_RemoveButton);
             this.SavedGroup.Location = new System.Drawing.Point(12, 28);
             this.SavedGroup.Name = "SavedGroup";
-            this.SavedGroup.Size = new System.Drawing.Size(250, 267);
+            this.SavedGroup.Size = new System.Drawing.Size(250, 274);
             this.SavedGroup.TabIndex = 1;
             this.SavedGroup.TabStop = false;
             this.SavedGroup.Text = "Saved";
@@ -269,7 +310,7 @@ namespace Tropegen
             // Saved_DuplicateButton
             // 
             this.Saved_DuplicateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Saved_DuplicateButton.Location = new System.Drawing.Point(152, 237);
+            this.Saved_DuplicateButton.Location = new System.Drawing.Point(152, 244);
             this.Saved_DuplicateButton.Name = "Saved_DuplicateButton";
             this.Saved_DuplicateButton.Size = new System.Drawing.Size(92, 23);
             this.Saved_DuplicateButton.TabIndex = 2;
@@ -280,7 +321,7 @@ namespace Tropegen
             // Saved_RemoveButton
             // 
             this.Saved_RemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Saved_RemoveButton.Location = new System.Drawing.Point(6, 237);
+            this.Saved_RemoveButton.Location = new System.Drawing.Point(6, 244);
             this.Saved_RemoveButton.Name = "Saved_RemoveButton";
             this.Saved_RemoveButton.Size = new System.Drawing.Size(92, 23);
             this.Saved_RemoveButton.TabIndex = 1;
@@ -307,7 +348,7 @@ namespace Tropegen
             this.SearchGroup.Controls.Add(this.SearchNameTextBox);
             this.SearchGroup.Controls.Add(this.SearchNameCheckBox);
             this.SearchGroup.Enabled = false;
-            this.SearchGroup.Location = new System.Drawing.Point(12, 301);
+            this.SearchGroup.Location = new System.Drawing.Point(12, 308);
             this.SearchGroup.Name = "SearchGroup";
             this.SearchGroup.Size = new System.Drawing.Size(250, 369);
             this.SearchGroup.TabIndex = 2;
@@ -457,7 +498,7 @@ namespace Tropegen
             this.CharacterGroup.Controls.Add(this.CharacterToolStrip);
             this.CharacterGroup.Location = new System.Drawing.Point(269, 29);
             this.CharacterGroup.Name = "CharacterGroup";
-            this.CharacterGroup.Size = new System.Drawing.Size(952, 641);
+            this.CharacterGroup.Size = new System.Drawing.Size(952, 648);
             this.CharacterGroup.TabIndex = 3;
             this.CharacterGroup.TabStop = false;
             this.CharacterGroup.Text = "Character";
@@ -468,7 +509,7 @@ namespace Tropegen
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FateGroup.Controls.Add(this.FateTextBox);
-            this.FateGroup.Location = new System.Drawing.Point(7, 430);
+            this.FateGroup.Location = new System.Drawing.Point(7, 437);
             this.FateGroup.Name = "FateGroup";
             this.FateGroup.Size = new System.Drawing.Size(518, 205);
             this.FateGroup.TabIndex = 7;
@@ -492,8 +533,9 @@ namespace Tropegen
             // 
             // SocialGroup
             // 
+            this.SocialGroup.Controls.Add(this.RandomSocial);
             this.SocialGroup.Controls.Add(this.HumorComboBox);
-            this.SocialGroup.Controls.Add(this.HumorLabel);
+            this.SocialGroup.Controls.Add(this.HumourLabel);
             this.SocialGroup.Controls.Add(this.TrustinpeopleComboBox);
             this.SocialGroup.Controls.Add(this.TrustinpeopleLabel);
             this.SocialGroup.Controls.Add(this.AdaptibilityComboBox);
@@ -508,7 +550,7 @@ namespace Tropegen
             this.SocialGroup.Controls.Add(this.SocialStatusLabel);
             this.SocialGroup.Location = new System.Drawing.Point(648, 45);
             this.SocialGroup.Name = "SocialGroup";
-            this.SocialGroup.Size = new System.Drawing.Size(298, 333);
+            this.SocialGroup.Size = new System.Drawing.Size(298, 228);
             this.SocialGroup.TabIndex = 6;
             this.SocialGroup.TabStop = false;
             this.SocialGroup.Text = "Social";
@@ -523,14 +565,14 @@ namespace Tropegen
             this.HumorComboBox.TabIndex = 25;
             this.HumorComboBox.SelectedIndexChanged += new System.EventHandler(this.HumorComboBox_SelectedIndexChanged);
             // 
-            // HumorLabel
+            // HumourLabel
             // 
-            this.HumorLabel.Location = new System.Drawing.Point(6, 166);
-            this.HumorLabel.Name = "HumorLabel";
-            this.HumorLabel.Size = new System.Drawing.Size(100, 25);
-            this.HumorLabel.TabIndex = 24;
-            this.HumorLabel.Text = "Humor:";
-            this.HumorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.HumourLabel.Location = new System.Drawing.Point(6, 166);
+            this.HumourLabel.Name = "HumourLabel";
+            this.HumourLabel.Size = new System.Drawing.Size(100, 25);
+            this.HumourLabel.TabIndex = 24;
+            this.HumourLabel.Text = "Humor:";
+            this.HumourLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TrustinpeopleComboBox
             // 
@@ -670,7 +712,7 @@ namespace Tropegen
             this.PowersGroup.Controls.Add(this.PhysicalFore);
             this.PowersGroup.Controls.Add(this.PhysicalBack);
             this.PowersGroup.Controls.Add(this.PhysicalPowerLabel);
-            this.PowersGroup.Location = new System.Drawing.Point(531, 430);
+            this.PowersGroup.Location = new System.Drawing.Point(531, 437);
             this.PowersGroup.Name = "PowersGroup";
             this.PowersGroup.Size = new System.Drawing.Size(415, 205);
             this.PowersGroup.TabIndex = 5;
@@ -866,6 +908,7 @@ namespace Tropegen
             // 
             this.ForcesGroup.Controls.Add(this.ForcesIntellectButton);
             this.ForcesGroup.Controls.Add(this.ForcesStaminaButton);
+            this.ForcesGroup.Controls.Add(this.RandomForces);
             this.ForcesGroup.Controls.Add(this.ForcesWillButton);
             this.ForcesGroup.Controls.Add(this.ForcesMagicButton);
             this.ForcesGroup.Controls.Add(this.ForcesPhysicalButton);
@@ -884,9 +927,9 @@ namespace Tropegen
             this.ForcesGroup.Controls.Add(this.ForcesPhysicalTextBox);
             this.ForcesGroup.Controls.Add(this.ForcesPhysicalComboBox);
             this.ForcesGroup.Controls.Add(this.ForcesPhysical);
-            this.ForcesGroup.Location = new System.Drawing.Point(331, 225);
+            this.ForcesGroup.Location = new System.Drawing.Point(331, 253);
             this.ForcesGroup.Name = "ForcesGroup";
-            this.ForcesGroup.Size = new System.Drawing.Size(311, 151);
+            this.ForcesGroup.Size = new System.Drawing.Size(311, 173);
             this.ForcesGroup.TabIndex = 4;
             this.ForcesGroup.TabStop = false;
             this.ForcesGroup.Text = "Forces";
@@ -1086,6 +1129,7 @@ namespace Tropegen
             this.PersonalityGroup.Controls.Add(this.EmotionalComboBox);
             this.PersonalityGroup.Controls.Add(this.EmotionalLabel);
             this.PersonalityGroup.Controls.Add(this.EmpathyComboBox);
+            this.PersonalityGroup.Controls.Add(this.RandomPersonality);
             this.PersonalityGroup.Controls.Add(this.EmpathyLabel);
             this.PersonalityGroup.Controls.Add(this.IdeaButton);
             this.PersonalityGroup.Controls.Add(this.EgoButton);
@@ -1109,7 +1153,7 @@ namespace Tropegen
             this.PersonalityGroup.Controls.Add(this.MoralityLabel);
             this.PersonalityGroup.Location = new System.Drawing.Point(7, 182);
             this.PersonalityGroup.Name = "PersonalityGroup";
-            this.PersonalityGroup.Size = new System.Drawing.Size(318, 245);
+            this.PersonalityGroup.Size = new System.Drawing.Size(318, 251);
             this.PersonalityGroup.TabIndex = 2;
             this.PersonalityGroup.TabStop = false;
             this.PersonalityGroup.Text = "Personality";
@@ -1344,9 +1388,12 @@ namespace Tropegen
             // 
             // AppearanceGroup
             // 
+            this.AppearanceGroup.Controls.Add(this.RandomHairColor);
             this.AppearanceGroup.Controls.Add(this.HairLengthComboBox);
             this.AppearanceGroup.Controls.Add(this.HairLengthLabel);
+            this.AppearanceGroup.Controls.Add(this.RandomAppearance2);
             this.AppearanceGroup.Controls.Add(this.kgLabel);
+            this.AppearanceGroup.Controls.Add(this.RandomAppearance1);
             this.AppearanceGroup.Controls.Add(this.cmLabel);
             this.AppearanceGroup.Controls.Add(this.PLabel2);
             this.AppearanceGroup.Controls.Add(this.PLabel1);
@@ -1367,7 +1414,7 @@ namespace Tropegen
             this.AppearanceGroup.Controls.Add(this.HeightLabel);
             this.AppearanceGroup.Location = new System.Drawing.Point(331, 44);
             this.AppearanceGroup.Name = "AppearanceGroup";
-            this.AppearanceGroup.Size = new System.Drawing.Size(311, 175);
+            this.AppearanceGroup.Size = new System.Drawing.Size(311, 203);
             this.AppearanceGroup.TabIndex = 3;
             this.AppearanceGroup.TabStop = false;
             this.AppearanceGroup.Text = "Appearance";
@@ -1376,7 +1423,7 @@ namespace Tropegen
             // 
             this.HairLengthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.HairLengthComboBox.FormattingEnabled = true;
-            this.HairLengthComboBox.Location = new System.Drawing.Point(113, 121);
+            this.HairLengthComboBox.Location = new System.Drawing.Point(113, 120);
             this.HairLengthComboBox.Name = "HairLengthComboBox";
             this.HairLengthComboBox.Size = new System.Drawing.Size(190, 21);
             this.HairLengthComboBox.TabIndex = 42;
@@ -1384,7 +1431,7 @@ namespace Tropegen
             // 
             // HairLengthLabel
             // 
-            this.HairLengthLabel.Location = new System.Drawing.Point(7, 118);
+            this.HairLengthLabel.Location = new System.Drawing.Point(7, 117);
             this.HairLengthLabel.Name = "HairLengthLabel";
             this.HairLengthLabel.Size = new System.Drawing.Size(100, 25);
             this.HairLengthLabel.TabIndex = 41;
@@ -1484,7 +1531,7 @@ namespace Tropegen
             this.HairColorButton.BackColor = System.Drawing.Color.Aqua;
             this.HairColorButton.Enabled = false;
             this.HairColorButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.HairColorButton.Location = new System.Drawing.Point(282, 96);
+            this.HairColorButton.Location = new System.Drawing.Point(255, 95);
             this.HairColorButton.Name = "HairColorButton";
             this.HairColorButton.Size = new System.Drawing.Size(21, 21);
             this.HairColorButton.TabIndex = 33;
@@ -1527,7 +1574,7 @@ namespace Tropegen
             // 
             this.BeautyTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.BeautyTypeComboBox.FormattingEnabled = true;
-            this.BeautyTypeComboBox.Location = new System.Drawing.Point(113, 146);
+            this.BeautyTypeComboBox.Location = new System.Drawing.Point(113, 145);
             this.BeautyTypeComboBox.Name = "BeautyTypeComboBox";
             this.BeautyTypeComboBox.Size = new System.Drawing.Size(190, 21);
             this.BeautyTypeComboBox.TabIndex = 15;
@@ -1535,7 +1582,7 @@ namespace Tropegen
             // 
             // BeautyTypeLabel
             // 
-            this.BeautyTypeLabel.Location = new System.Drawing.Point(7, 143);
+            this.BeautyTypeLabel.Location = new System.Drawing.Point(7, 142);
             this.BeautyTypeLabel.Name = "BeautyTypeLabel";
             this.BeautyTypeLabel.Size = new System.Drawing.Size(100, 25);
             this.BeautyTypeLabel.TabIndex = 14;
@@ -1546,15 +1593,15 @@ namespace Tropegen
             // 
             this.HairColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.HairColorComboBox.FormattingEnabled = true;
-            this.HairColorComboBox.Location = new System.Drawing.Point(113, 96);
+            this.HairColorComboBox.Location = new System.Drawing.Point(113, 95);
             this.HairColorComboBox.Name = "HairColorComboBox";
-            this.HairColorComboBox.Size = new System.Drawing.Size(161, 21);
+            this.HairColorComboBox.Size = new System.Drawing.Size(136, 21);
             this.HairColorComboBox.TabIndex = 13;
             this.HairColorComboBox.SelectedIndexChanged += new System.EventHandler(this.HairColorComboBox_SelectedIndexChanged);
             // 
             // HairColorLabel
             // 
-            this.HairColorLabel.Location = new System.Drawing.Point(7, 93);
+            this.HairColorLabel.Location = new System.Drawing.Point(7, 92);
             this.HairColorLabel.Name = "HairColorLabel";
             this.HairColorLabel.Size = new System.Drawing.Size(100, 25);
             this.HairColorLabel.TabIndex = 12;
@@ -1565,7 +1612,7 @@ namespace Tropegen
             // 
             this.EyesColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.EyesColorComboBox.FormattingEnabled = true;
-            this.EyesColorComboBox.Location = new System.Drawing.Point(113, 71);
+            this.EyesColorComboBox.Location = new System.Drawing.Point(113, 70);
             this.EyesColorComboBox.Name = "EyesColorComboBox";
             this.EyesColorComboBox.Size = new System.Drawing.Size(190, 21);
             this.EyesColorComboBox.TabIndex = 11;
@@ -1573,7 +1620,7 @@ namespace Tropegen
             // 
             // EyesColorLabel
             // 
-            this.EyesColorLabel.Location = new System.Drawing.Point(7, 68);
+            this.EyesColorLabel.Location = new System.Drawing.Point(7, 67);
             this.EyesColorLabel.Name = "EyesColorLabel";
             this.EyesColorLabel.Size = new System.Drawing.Size(100, 25);
             this.EyesColorLabel.TabIndex = 10;
@@ -1812,7 +1859,7 @@ namespace Tropegen
             this.SeedTextBox.Name = "SeedTextBox";
             this.SeedTextBox.Size = new System.Drawing.Size(150, 25);
             this.SeedTextBox.Leave += new System.EventHandler(this.SeedText_Leave);
-            this.SeedTextBox.TextChanged += new System.EventHandler(this.SeedTextBox_Click);
+            this.SeedTextBox.TextChanged += new System.EventHandler(this.SeedTextBox_TextChanged);
             // 
             // toolStripSeparator1
             // 
@@ -1859,18 +1906,79 @@ namespace Tropegen
             this.SaveButton.Text = "Save";
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // CharacterListsButton
+            // RandomPersonality
             // 
-            this.CharacterListsButton.Name = "CharacterListsButton";
-            this.CharacterListsButton.Size = new System.Drawing.Size(180, 22);
-            this.CharacterListsButton.Text = "CharacterLists";
-            this.CharacterListsButton.Click += new System.EventHandler(this.CharacterListsButton_Click);
+            this.RandomPersonality.Location = new System.Drawing.Point(6, 219);
+            this.RandomPersonality.Name = "RandomPersonality";
+            this.RandomPersonality.Size = new System.Drawing.Size(305, 20);
+            this.RandomPersonality.TabIndex = 13;
+            this.RandomPersonality.Text = "Random Personality";
+            this.RandomPersonality.UseVisualStyleBackColor = true;
+            this.RandomPersonality.Click += new System.EventHandler(this.RandomPersonality_Click);
+            // 
+            // RandomAppearance1
+            // 
+            this.RandomAppearance1.Location = new System.Drawing.Point(6, 172);
+            this.RandomAppearance1.Name = "RandomAppearance1";
+            this.RandomAppearance1.Size = new System.Drawing.Size(132, 20);
+            this.RandomAppearance1.TabIndex = 14;
+            this.RandomAppearance1.Text = "Random Height+Weight";
+            this.RandomAppearance1.UseVisualStyleBackColor = true;
+            this.RandomAppearance1.Click += new System.EventHandler(this.RandomAppearance1_Click);
+            // 
+            // RandomAppearance2
+            // 
+            this.RandomAppearance2.Location = new System.Drawing.Point(144, 172);
+            this.RandomAppearance2.Name = "RandomAppearance2";
+            this.RandomAppearance2.Size = new System.Drawing.Size(159, 20);
+            this.RandomAppearance2.TabIndex = 15;
+            this.RandomAppearance2.Text = "Random Other Appearance";
+            this.RandomAppearance2.UseVisualStyleBackColor = true;
+            this.RandomAppearance2.Click += new System.EventHandler(this.RandomAppearance2_Click);
+            // 
+            // RandomForces
+            // 
+            this.RandomForces.Location = new System.Drawing.Point(6, 144);
+            this.RandomForces.Name = "RandomForces";
+            this.RandomForces.Size = new System.Drawing.Size(297, 20);
+            this.RandomForces.TabIndex = 16;
+            this.RandomForces.Text = "Random Forces";
+            this.RandomForces.UseVisualStyleBackColor = true;
+            this.RandomForces.Click += new System.EventHandler(this.RandomForces_Click);
+            // 
+            // RandomSocial
+            // 
+            this.RandomSocial.Location = new System.Drawing.Point(6, 194);
+            this.RandomSocial.Name = "RandomSocial";
+            this.RandomSocial.Size = new System.Drawing.Size(280, 20);
+            this.RandomSocial.TabIndex = 17;
+            this.RandomSocial.Text = "Random Social";
+            this.RandomSocial.UseVisualStyleBackColor = true;
+            this.RandomSocial.Click += new System.EventHandler(this.RandomSocial_Click);
+            // 
+            // RandomHairColor
+            // 
+            this.RandomHairColor.Location = new System.Drawing.Point(282, 95);
+            this.RandomHairColor.Name = "RandomHairColor";
+            this.RandomHairColor.Size = new System.Drawing.Size(21, 21);
+            this.RandomHairColor.TabIndex = 18;
+            this.RandomHairColor.Text = "R";
+            this.RandomHairColor.UseVisualStyleBackColor = true;
+            this.RandomHairColor.Click += new System.EventHandler(this.RandomHairColor_Click);
+            // 
+            // LockRandomsButton
+            // 
+            this.LockRandomsButton.Name = "LockRandomsButton";
+            this.LockRandomsButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
+            this.LockRandomsButton.Size = new System.Drawing.Size(216, 22);
+            this.LockRandomsButton.Text = "LockRandoms";
+            this.LockRandomsButton.Click += new System.EventHandler(this.LockRandomsButton_Click);
             // 
             // Extended
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1227, 678);
+            this.ClientSize = new System.Drawing.Size(1227, 685);
             this.Controls.Add(this.CharacterGroup);
             this.Controls.Add(this.SearchGroup);
             this.Controls.Add(this.MainToolStrip);
@@ -2047,7 +2155,7 @@ namespace Tropegen
         private System.Windows.Forms.ComboBox SocialStatusComboBox;
         private System.Windows.Forms.Label SocialStatusLabel;
         private System.Windows.Forms.ComboBox HumorComboBox;
-        private System.Windows.Forms.Label HumorLabel;
+        private System.Windows.Forms.Label HumourLabel;
         private System.Windows.Forms.ComboBox TrustinpeopleComboBox;
         private System.Windows.Forms.Label TrustinpeopleLabel;
         private System.Windows.Forms.ComboBox AdaptibilityComboBox;
@@ -2068,6 +2176,15 @@ namespace Tropegen
         private System.Windows.Forms.Button Saved_DuplicateButton;
         private System.Windows.Forms.ToolStripDropDownButton SettingsStripDown;
         private System.Windows.Forms.ToolStripMenuItem RandomationLawsButton;
+        private System.Windows.Forms.ToolStripDropDownButton FileStripDown;
         private System.Windows.Forms.ToolStripMenuItem CharacterListsButton;
+        private System.Windows.Forms.ToolStripMenuItem SaveAllButton;
+        private System.Windows.Forms.Button RandomHairColor;
+        private System.Windows.Forms.Button RandomSocial;
+        private System.Windows.Forms.Button RandomForces;
+        private System.Windows.Forms.Button RandomAppearance2;
+        private System.Windows.Forms.Button RandomAppearance1;
+        private System.Windows.Forms.Button RandomPersonality;
+        private System.Windows.Forms.ToolStripMenuItem LockRandomsButton;
     }
 }
